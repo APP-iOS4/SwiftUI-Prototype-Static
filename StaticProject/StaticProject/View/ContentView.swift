@@ -9,54 +9,48 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            LogoImageView()
-            
-            Spacer()
-            Spacer()
-            
-            Button {
-                
-            } label: {
-                Text("로그인")
-                    .modifier(ButtonTitle())
-                    
-            }
-            .modifier(ButtonFrame())
-            
-            
-            Button {
-                
-            } label: {
-                Text("회원가입")
-                    .modifier(ButtonTitle())
-            }
-            .modifier(ButtonFrame())
-
-            Spacer()
-            Spacer()
-            
+        NavigationStack {
             VStack {
-                Image("btnG_official")
-                    .resizable()
-                    .scaledToFit()
-                    .modifier(SocialLoginButtonFrame())
+                LogoImageView()
                 
-                Image("kakao_login_medium_narrow")
-                    .resizable()
-                    .scaledToFit()
-                    .modifier(SocialLoginButtonFrame())
+                Spacer()
+                Spacer()
                 
-                Image("ios_light_sq_SI")
-                    .resizable()
-                    .scaledToFit()
-                    .modifier(SocialLoginButtonFrame())
+                NavigationLink(destination: LoginView(), label: {
+                    Text("로그인")
+                        .modifier(ButtonTitle())
+                })
+                .modifier(ButtonFrame())
+                
+                NavigationLink(destination: SignupView(), label: {
+                    Text("회원가입")
+                        .modifier(ButtonTitle())
+                })
+                .modifier(ButtonFrame())
+               
+                Spacer()
+                Spacer()
+                
+                VStack {
+                    Image("btnG_official")
+                        .resizable()
+                        .scaledToFit()
+                        .modifier(SocialLoginButtonFrame())
+                    
+                    Image("kakao_login_medium_narrow")
+                        .resizable()
+                        .scaledToFit()
+                        .modifier(SocialLoginButtonFrame())
+                    
+                    Image("ios_light_sq_SI")
+                        .resizable()
+                        .scaledToFit()
+                        .modifier(SocialLoginButtonFrame())
+                }
+                Spacer()
             }
-            
-            Spacer()
-
-            
         }
+        .navigationTitle("")
     }
 }
 
