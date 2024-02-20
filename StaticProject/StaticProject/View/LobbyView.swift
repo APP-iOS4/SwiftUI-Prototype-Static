@@ -24,7 +24,6 @@ struct LobbyView: View {
 
     var body: some View {
         NavigationStack {
-<<<<<<< HEAD
             
             ExtractedView(selectedDate: $selectedDate)
             
@@ -56,16 +55,6 @@ struct LobbyView: View {
                 }
                 .listStyle(.plain)
                 
-=======
-
-            VStack {
-                HStack {
-                    Image(nam)
-                }
-                Text("(서울) 화요일 경도 할사람~")
-                Text("양재 양재천 입구")
-                Text("#운동 / 스포츠 | 20대 초반")
->>>>>>> 2a4665080f88e58de897284d7d7a1db3280a96dd
             }
                     
             Spacer()
@@ -79,7 +68,6 @@ struct LobbyView: View {
     NavigationStack {
         LobbyView()
     }
-<<<<<<< HEAD
 }
 
 struct RoomView: View {
@@ -199,6 +187,4 @@ struct ExtractedView: View {
             Spacer()
         }
     }
-=======
->>>>>>> 2a4665080f88e58de897284d7d7a1db3280a96dd
 }
