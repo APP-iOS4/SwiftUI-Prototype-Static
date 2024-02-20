@@ -96,10 +96,19 @@ struct CreateRoomView: View {
                     .font(.system(size: 17))
                     .frame(alignment: .leading)
                     .frame(width: 350, height: 25, alignment: .leading)
-                TextEditor(text: $roomIntroduce)
-                    .frame(width: 340, height: 100, alignment: .center)
-                    .border(Color.gray, width: 0.5)
-                    .padding()
+                ZStack(alignment: .topLeading) {
+                    TextEditor(text: $roomIntroduce)
+                        .frame(width: 340, height: 100, alignment: .center)
+                        .border(Color.gray, width: 0.5)
+                        .padding()
+                    if roomIntroduce.isEmpty {
+                        Text("모임의 소개를 적어주세요.")
+                            .foregroundColor(.gray)
+                            .frame(width: 200, height: 100, alignment: .topLeading)
+                            .padding(.leading, 25)
+                            .padding(.top, 25)
+                    }
+                }
             }
         }
         // 위 친구들을 스크롤 뷰로 구현 예정
@@ -109,14 +118,12 @@ struct CreateRoomView: View {
                 // 생성하기 버튼 클릭 시 기능 구현
             } label: {
                 Text("생성하기")
-                    .frame(width: 350, height: 35, alignment: .center)
+                    .frame(width: 350, height: 40, alignment: .center)
                     .bold()
             }
             .buttonStyle(.borderedProminent)
         }
         .tint(Color("MainColor"))
-        
-        // 이친구들을 따로 빼고
     }
 }
 
