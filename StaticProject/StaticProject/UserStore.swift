@@ -19,4 +19,22 @@ class UserStore {
     func appendUser(user: User) {
         users.append(user)
     }
+    
+    func loginUser(id: String, password: String) -> Bool{
+        if searchUserToIdPassword(id: id, password: password) != nil {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private func searchUserToIdPassword(id: String, password: String) -> User? {
+        for user in users {
+            if user.userID == id && user.password == password {
+                return user
+            }
+        }
+        
+        return nil
+    }
 }
