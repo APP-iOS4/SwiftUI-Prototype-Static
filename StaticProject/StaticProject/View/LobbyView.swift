@@ -19,13 +19,10 @@ import SwiftUI
 //
 
 struct LobbyView: View {
-    // var roomStore = RoomStore()
     @State private var selectedDate: Int = 0
 
     var body: some View {
-        NavigationStack {
-            
-            ExtractedView(selectedDate: $selectedDate)
+            ButtonView(selectedDate: $selectedDate)
             
             VStack {
                 
@@ -34,34 +31,60 @@ struct LobbyView: View {
                 List {
                     switch selectedDate {
                     case 0:
-                        RoomView()
-                        RoomView()
-                        RoomView()
-                        RoomView()
+                        NavigationLink(destination: DetailRoomView(), label: {
+                            RoomView()
+                        })
+                        NavigationLink(destination: DetailRoomView(), label: {
+                            RoomView()
+                        })
+                        NavigationLink(destination: DetailRoomView(), label: {
+                            RoomView()
+                        })
+                        NavigationLink(destination: DetailRoomView(), label: {
+                            RoomView()
+                        })
+                        
                     case 1:
-                        RoomView()
-                        RoomView()
+                        NavigationLink(destination: DetailRoomView(), label: {
+                            RoomView()
+                        })
+                        NavigationLink(destination: DetailRoomView(), label: {
+                            RoomView()
+                        })
                     case 2:
-                        RoomView()
-                        RoomView()
-                        RoomView()
+                        NavigationLink(destination: DetailRoomView(), label: {
+                            RoomView()
+                        })
+                        NavigationLink(destination: DetailRoomView(), label: {
+                            RoomView()
+                        })
+                        NavigationLink(destination: DetailRoomView(), label: {
+                            RoomView()
+                        })
                     default:
-                        RoomView()
-                        RoomView()
-                        RoomView()
-                        RoomView()
-                        RoomView()
+                        NavigationLink(destination: DetailRoomView(), label: {
+                            RoomView()
+                        })
+                        NavigationLink(destination: DetailRoomView(), label: {
+                            RoomView()
+                        })
+                        NavigationLink(destination: DetailRoomView(), label: {
+                            RoomView()
+                        })
+                        NavigationLink(destination: DetailRoomView(), label: {
+                            RoomView()
+                        })
+                        NavigationLink(destination: DetailRoomView(), label: {
+                            RoomView()
+                        })
                     }
                 }
                 .listStyle(.plain)
                 
             }
-                    
-            Spacer()
+            .navigationTitle("메인 화면")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationTitle("메인 화면")
-        .navigationBarTitleDisplayMode(.inline)
-    }
 }
 
 #Preview {
@@ -102,11 +125,14 @@ struct RoomView: View {
                         .minimumScaleFactor(0.3)
                 }
                 
-                Text("# \(categoryText) | \(ageText)")
-                    .font(.footnote)
-                    .foregroundStyle(.gray)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.3)
+                HStack(spacing: 0) {
+                    Text("# \(categoryText) | \(ageText)")
+                    Text(" | 90W")
+                }
+                .font(.footnote)
+                .foregroundStyle(.gray)
+                .lineLimit(1)
+                .minimumScaleFactor(0.3)
             }
             
             Spacer()
@@ -134,7 +160,7 @@ struct RoomView: View {
     }
 }
 
-struct ExtractedView: View {
+struct ButtonView: View {
     @Binding var selectedDate: Int
     
     var body: some View {
