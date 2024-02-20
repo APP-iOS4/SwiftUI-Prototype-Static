@@ -55,7 +55,7 @@ struct LoginView: View {
 //            }
 //            .modifier(ButtonFrame())
             
-            NavigationLink(destination: LobbyView(), label: {
+            NavigationLink(destination: MainView(), label: {
                 Text("로그인")
                     .modifier(ButtonTitle())
             })

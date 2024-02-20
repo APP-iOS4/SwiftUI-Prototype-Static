@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ParticipateView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        LogoImageView()
+        Text("참여하신 방이 없습니다.")
     }
 }
 
