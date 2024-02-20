@@ -47,12 +47,18 @@ struct LoginView: View {
                 .font(.callout)
                 .foregroundStyle(Color("MainColor"))
             
-            Button {
+//            Button {
 //                userStore.loginUser(id: id, password: password)
-            } label: {
+//            } label: {
+//                Text("로그인")
+//                    .modifier(ButtonTitle())
+//            }
+//            .modifier(ButtonFrame())
+            
+            NavigationLink(destination: LobbyView(), label: {
                 Text("로그인")
                     .modifier(ButtonTitle())
-            }
+            })
             .modifier(ButtonFrame())
             
             Spacer()
