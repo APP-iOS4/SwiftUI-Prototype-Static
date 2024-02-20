@@ -21,6 +21,8 @@
 		306B67A92B84340A006DC98E /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306B67A82B84340A006DC98E /* AccountView.swift */; };
 		306B67AB2B843423006DC98E /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306B67AA2B843423006DC98E /* CreateRoomView.swift */; };
 		306B67AD2B843430006DC98E /* DetailRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306B67AC2B843430006DC98E /* DetailRoomView.swift */; };
+		306B67B02B8440B3006DC98E /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306B67AF2B8440B3006DC98E /* UserStore.swift */; };
+		306B67B22B8440BF006DC98E /* RoomStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306B67B12B8440BF006DC98E /* RoomStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		306B67A82B84340A006DC98E /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		306B67AA2B843423006DC98E /* CreateRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
 		306B67AC2B843430006DC98E /* DetailRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRoomView.swift; sourceTree = "<group>"; };
+		306B67AF2B8440B3006DC98E /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
+		306B67B12B8440BF006DC98E /* RoomStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +98,9 @@
 			isa = PBXGroup;
 			children = (
 				306B67972B8432CE006DC98E /* User.swift */,
+				306B67AF2B8440B3006DC98E /* UserStore.swift */,
 				306B67992B8432F2006DC98E /* Room.swift */,
+				306B67B12B8440BF006DC98E /* RoomStore.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -185,6 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				306B67B22B8440BF006DC98E /* RoomStore.swift in Sources */,
 				306B67A12B8433A5006DC98E /* SignupView.swift in Sources */,
 				306B678B2B843277006DC98E /* ContentView.swift in Sources */,
 				306B67AD2B843430006DC98E /* DetailRoomView.swift in Sources */,
@@ -197,6 +204,7 @@
 				306B67AB2B843423006DC98E /* CreateRoomView.swift in Sources */,
 				306B67A52B8433D1006DC98E /* ExploreView.swift in Sources */,
 				306B67982B8432CE006DC98E /* User.swift in Sources */,
+				306B67B02B8440B3006DC98E /* UserStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

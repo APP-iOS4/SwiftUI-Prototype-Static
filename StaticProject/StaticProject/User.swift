@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct User: Identifiable {
+    let id: UUID = UUID()
+    let name: String
+}
