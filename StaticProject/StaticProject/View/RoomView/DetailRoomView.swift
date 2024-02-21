@@ -23,7 +23,7 @@ struct DetailRoomView: View {
                         .frame(width: 250, height: 200, alignment: .center)
                         .padding(.horizontal, 50)
                         .overlay(RoundedRectangle(cornerRadius: 14)
-                                .stroke(Color.gray, lineWidth: 4))
+                            .stroke(Color.gray, lineWidth: 4))
                 }
                 Spacer()
                 
@@ -39,14 +39,14 @@ struct DetailRoomView: View {
                         .foregroundColor(.gray)
                     Text("현재 인원 5/10")
                         .font(.system(size: 15))
-                    .frame(width: 150, height: 25, alignment: .trailing)
+                        .frame(width: 150, height: 25, alignment: .trailing)
                 }
                 
                 HStack {
                     Text("위치")
                         .font(.system(size: 17))
                         .frame(alignment: .leading)
-                    .frame(width: 178, height: 25, alignment: .leading)
+                        .frame(width: 178, height: 25, alignment: .leading)
                     Image(systemName: "mappin.circle")
                         .tint(Color("MainColor"))
                         .foregroundColor(.gray)
@@ -65,7 +65,7 @@ struct DetailRoomView: View {
                     Text("참여 조건")
                         .font(.system(size: 17))
                         .frame(alignment: .leading)
-                    .frame(width: 182, height: 25, alignment: .leading)
+                        .frame(width: 182, height: 25, alignment: .leading)
                     Text("20대")
                         .font(.system(size: 17))
                         .frame(alignment: .leading)
@@ -109,54 +109,68 @@ struct DetailRoomView: View {
                      """)
                 .frame(width: 340, height: 200, alignment: .topLeading)
                 .overlay(RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.gray, lineWidth: 0.5))
+                    .stroke(Color.gray, lineWidth: 0.5))
             }
         }
-        
-//======================================================== // 하트 + 참가 선청
-//        HStack {
-//            Button {
-//                isLiked.toggle()
-//                if isLiked {
-//                    isLikedNum += 1
-//                } else {
-//                    isLikedNum -= 1
-//                }
-//            } label: {
-//                if isLiked {
-//                    VStack {
-//                        Text(Image(systemName: "heart.fill"))
-//                        Text("\(isLikedNum)")
-//                    }
-//                } else {
-//                    VStack {
-//                        Text(Image(systemName: "heart"))
-//                        Text("\(isLikedNum)")
-//                    }
-//                }
-//            }
-//            .frame(width: 60, height: 60, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-//            
-//            
-//            Button {
-//                // 생성하기 버튼 클릭 시 기능 구현
-//            } label: {
-//                Text("참여하기")
-//                    .frame(width: 250, height: 40, alignment: .center)
-//                    .bold()
-//            }
-//            .buttonStyle(.borderedProminent)
-//        }
-//        .tint(Color("MainColor"))
-        
+    }
+}
+
+
+// 하트 + 참가 선청
+struct participateRoomView: View {
+    
+    @State var isLiked: Bool = false
+    @State var isLikedNum: Int = 99
+    //======================================================== // 하트 + 참가 선청
+    var body: some View {
+        HStack {
+            Button {
+                isLiked.toggle()
+                if isLiked {
+                    isLikedNum += 1
+                } else {
+                    isLikedNum -= 1
+                }
+            } label: {
+                if isLiked {
+                    VStack {
+                        Text(Image(systemName: "heart.fill"))
+                        Text("\(isLikedNum)")
+                    }
+                } else {
+                    VStack {
+                        Text(Image(systemName: "heart"))
+                        Text("\(isLikedNum)")
+                    }
+                }
+            }
+            .frame(width: 60, height: 60, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            
+            
+            Button {
+                // 생성하기 버튼 클릭 시 기능 구현
+            } label: {
+                Text("참여하기")
+                    .frame(width: 250, height: 40, alignment: .center)
+                    .bold()
+            }
+            .buttonStyle(.borderedProminent)
+        }
+        .tint(Color("MainColor"))
+    }
+}
+
 //======================================================== (톡방, 나가기 뷰)
+struct exitRoomView: View {
+    
+    var body: some View {
         HStack {
             Button {
                 // 톡방으로 이동
             } label: {
                 Image(systemName: "message")
                     .resizable()
-                    
+                
             }
             .frame(width: 40, height: 40, alignment: .center)
             .padding(.trailing, 7)
@@ -171,8 +185,6 @@ struct DetailRoomView: View {
             .buttonStyle(.borderedProminent)
         }
         .tint(Color("MainColor"))
-        
-        //---------------------------------------------------
     }
 }
 

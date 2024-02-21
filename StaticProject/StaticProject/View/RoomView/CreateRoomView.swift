@@ -15,6 +15,7 @@ struct CreateRoomView: View {
     @State private var personnel: Int = 0
     @State private var selectedCategory = ""
     @State private var roomDate = Date()
+    @Environment(\.presentationMode) var presentation
     
     private var columns: [GridItem] = [
         GridItem(.flexible(minimum: .minimum(80, 80), maximum: .maximum(80, 80))),
@@ -204,7 +205,7 @@ struct CreateRoomView: View {
         
         HStack {
             Button {
-                // 생성하기 버튼 클릭 시 기능 구현
+                presentation.wrappedValue.dismiss()
             } label: {
                 Text("생성하기")
                     .frame(width: 350, height: 40, alignment: .center)
