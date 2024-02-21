@@ -10,13 +10,13 @@ import SwiftUI
 struct MainView: View {
     // MARK: - Variables
     @State private var selectedTabIndex: Int = 0
-    @State private var isLogIn: Bool = true
+    @State private var isLogIn: Bool = false
     
     // MARK: - Body
     var body: some View {
         
         if !isLogIn {
-            ContentView()
+            ContentView(isLogin: $isLogIn)
         } else {
             TabView(selection: $selectedTabIndex) {
                 NavigationStack {

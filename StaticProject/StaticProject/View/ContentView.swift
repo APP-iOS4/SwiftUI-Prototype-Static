@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Binding var isLogin: Bool
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -16,13 +18,13 @@ struct ContentView: View {
                 Spacer()
                 Spacer()
                 
-                NavigationLink(destination: LoginView(), label: {
+                NavigationLink(destination: LoginView(isLogin: $isLogin), label: {
                     Text("로그인")
                         .modifier(ButtonTitle())
                 })
                 .modifier(ButtonFrame())
                 
-                NavigationLink(destination: SignupView(), label: {
+                NavigationLink(destination: SignupView(isLogin: $isLogin), label: {
                     Text("회원가입")
                         .modifier(ButtonTitle())
                 })
@@ -51,11 +53,12 @@ struct ContentView: View {
             }
         }
         .navigationTitle("")
+        .tint(Color("MainColor"))
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(isLogin: .constant(false))
 }
 
 
