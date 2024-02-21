@@ -25,35 +25,18 @@ struct LoginView: View {
             
             VStack(alignment: .leading) {
                 Text("아이디")
-                TextField("이메일을 입력해주세요.", text: $id,  onEditingChanged:  { edit in
-                    
-                    isIdEditing = edit
-                })
-                    .textFieldStyle(MyTextFieldStyle(focused: $isIdEditing))
-                    .font(.title2)
-
+                TextField("이메일을 입력해주세요.", text: $id)
+                    .modifier(TextFieldFrame())
                 
                 Text("비밀번호")
-                SecureField("비밀번호를 입력해주세요", text: $password, onCommit: { isPasswordEditing = false })
-                    .onTapGesture {
-                        isPasswordEditing = true
-                    }
-                    .textFieldStyle(MyTextFieldStyle(focused: $isPasswordEditing))
-                    .font(.title2)
+                SecureField("비밀번호를 입력해주세요", text: $password)
+                    .modifier(TextFieldFrame())
             }
             .padding()
             
             Text("\(loginError)")
                 .font(.callout)
                 .foregroundStyle(Color("MainColor"))
-            
-//            Button {
-//                userStore.loginUser(id: id, password: password)
-//            } label: {
-//                Text("로그인")
-//                    .modifier(ButtonTitle())
-//            }
-//            .modifier(ButtonFrame())
             
             NavigationLink(destination: MainView(), label: {
                 Text("로그인")
@@ -85,6 +68,19 @@ struct MyTextFieldStyle: TextFieldStyle {
                 .stroke(focused ? Color("MainColor") : Color(UIColor.systemGray5), lineWidth: 1)
         )
         .padding(5)
+    }
+}
+
+struct TextFieldFrame: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.title3)
+            .padding(3)
+            .background(
+                RoundedRectangle(cornerRadius: 5, style: .continuous)
+                    .stroke(Color(UIColor.systemGray5), lineWidth: 1)
+            )
+            .padding(4)
     }
 }
 
