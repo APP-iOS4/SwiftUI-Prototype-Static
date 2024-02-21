@@ -9,20 +9,23 @@ import SwiftUI
 
 struct CreateRoomView: View {
     @State var roomIntroduce: String = ""
+    @State var roomTag: String = ""
     @State var roomName: String = ""
     @State var roomParty: String = ""
+    @State var personnel: Int = 0
     
     @State private var roomDate = Date()
     
     let categories = ["운동", "음악", "맛집", "문화", "게임","소통"]
-    let personnel = ["5명", "10명", "20명", "100명"]
     
     @State private var selectedCategory = ""
-    @State private var selectedPersonnel = ""
     
     var body: some View {
         ScrollView {
             VStack {
+                Spacer()
+                Spacer()
+                Spacer()
                 Spacer()
                 ZStack(alignment: .bottomTrailing) {
                     Image("StaticLogobyDesigner")
@@ -43,12 +46,15 @@ struct CreateRoomView: View {
                     }
                     .tint(Color("MainColor"))
                 }
-                Spacer()
                 
                 
-                Text("모임 이름")
-                    .font(.system(size: 17))
-                    .frame(width: 350, height: 25, alignment: .leading)
+                    .padding()
+                HStack {
+                    Text("모임 이름")
+                        .font(.system(size: 17))
+                        .padding(.leading,24)
+                    Spacer()
+                }
                 
                 TextField(text: $roomName) {
                     Text(" 모임의 이름을 입력하여 주세요.")
@@ -57,60 +63,210 @@ struct CreateRoomView: View {
                 .overlay(RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.gray, lineWidth: 0.5))
                 
+                .padding(.bottom, 20)
                 
-                Text("종류")
-                    .font(.system(size: 17))
-                    .frame(alignment: .leading)
-                    .frame(width: 350, height: 25, alignment: .leading)
-                Picker("종류를 선택하세요.", selection: $selectedCategory) {
-                    ForEach(categories, id: \.self) {
-                        Text($0)
-                    }
-                }
-                .pickerStyle(.palette)
-                .background()
+//                Picker("종류를 선택하세요.", selection: $selectedCategory) {
+//                    ForEach(categories, id: \.self) {
+//                        Text($0)
+//                    }
+//                }
+//                .pickerStyle(.palette)
+//                .background()
+//                .padding(.bottom, 20)
                 
                 
-                Text("인원")
-                    .font(.system(size: 17))
-                    .frame(alignment: .leading)
-                    .frame(width: 350, height: 25, alignment: .leading)
-                Picker("인원을 선택하세요.", selection: $selectedPersonnel) {
-                    ForEach(personnel, id: \.self) {
-                        Text($0)
-                    }
-                }
-                .pickerStyle(.palette)
-                
-                
-                Text("날짜 및 시간")
-                    .font(.system(size: 17))
-                    .frame(alignment: .leading)
-                    .frame(width: 350, height: 25, alignment: .leading)
-                
-                DatePicker("", selection: $roomDate)
-                    .frame(width: 1, height: 50, alignment: .center)
+                HStack {
+                    Text("인원")
+                        .font(.system(size: 17))
+                        .padding(.leading,24)
                     
-                //날짜 없애고 시간만???
+                    
+                    Spacer()
+                    Button{
+                        if personnel > 0 {
+                            personnel -= 1
+                        }
+                    } label: {
+                        Image(systemName: "minus.circle")
+                            .resizable()
+                            .frame(width: 27.0, height: 27.0)
+                            .tint(Color("MainColor"))
+                    }
+                    
+                    Text("\(personnel)")
+                        .font(.title3)
+                        
+                    
+                    Button{
+                        personnel += 1
+                    } label: {
+                        Image(systemName: "plus.circle")
+                            .resizable()
+                            .frame(width: 27.0, height: 27.0)
+                            .tint(Color("MainColor"))
+                    }
+                    
+                }
+                .padding(.trailing, 45)
+                .padding(.bottom, 25)
+
+                
+                HStack {
+                    Text("날짜 및 시간")
+                        .font(.system(size: 17))
+                        .padding(.leading,24)
+                        
+                    
+                    
+                    DatePicker("", selection: $roomDate)
+                        .frame(height: 24, alignment: .center)
+                        .padding(.trailing, 24)
+                    //날짜 없애고 시간만???
+                }
+                .padding(.bottom, 25)
+                
+                HStack {
+                    Text("종류")
+                        .font(.system(size: 17))
+                        .padding(.leading,24)
+                    Spacer()
+                }
+                
+                Grid {
+                    GridRow {
+                        Button {
+                            
+                        } label: {
+                            Text("운동/헬스")
+                        }
+                        
+                        Button {
+                            // 색 변환 기능 구현
+                        } label: {
+                            Text("독서")
+                        }
+                        
+                        Button {
+                            // 색 변환 기능 구현
+                        } label: {
+                            Text("음악/악기")
+                        }
+                        
+                        Button {
+                            // 색 변환 기능 구현
+                        } label: {
+                            Text("드라이브")
+                        }
+                        
+                        Button {
+                            // 색 변환 기능 구현
+                        } label: {
+                            Text("여행")
+                        }
+                        
+                        Button {
+                            // 색 변환 기능 구현
+                        } label: {
+                            Text("공부")
+                        }
+                        
+                    }
+                    .font(.system(size: 15))
+                    .foregroundStyle(.gray)
+                    .padding(5)
+                    .overlay(RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.gray, lineWidth: 0.5))
+                    GridRow {
+                        Button {
+                            // 색 변환 기능 구현
+                        } label: {
+                            Text("문화/예술")
+                        }
+                        
+                        Button {
+                            // 색 변환 기능 구현
+                        } label: {
+                            Text("언어")
+                        }
+                        
+                        Button {
+                            // 색 변환 기능 구현
+                        } label: {
+                            Text("맛집투어")
+                        }
+                        
+                        Button {
+                            // 색 변환 기능 구현
+                        } label: {
+                            Text("봉사활동")
+                        }
+                        
+                        Button {
+                            // 색 변환 기능 구현
+                        } label: {
+                            Text("산책")
+                        }
+                        
+                        Button {
+                            // 색 변환 기능 구현
+                        } label: {
+                            Text("소통")
+                        }
+                    }
+                    .font(.system(size: 15))
+                    .foregroundStyle(.gray)
+                    .padding(5)
+                    .overlay(RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.gray, lineWidth: 0.5))
+                    .padding(.bottom, 10)
+                }
+            
                 
                 Divider()
                 
-                Text("모임 소개")
-                    .font(.system(size: 17))
-                    .frame(alignment: .leading)
-                    .frame(width: 350, height: 25, alignment: .leading)
+                HStack {
+                    Text("모임 소개")
+                        .font(.system(size: 17))
+                        .padding(.leading,26)
+                    Spacer()
+                }
+                .padding(.top, 5)
+                .padding(.bottom, -12)
+                
                 ZStack(alignment: .topLeading) {
                     TextEditor(text: $roomIntroduce)
-                        .frame(width: 360, height: 100, alignment: .center)
+                        .frame(height: 100, alignment: .center)
                         .overlay(RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.gray, lineWidth: 0.5))
+                            .stroke(Color.gray, lineWidth: 0.5))
                         .padding()
                     if roomIntroduce.isEmpty {
                         Text("모임의 소개를 입력하여 주세요.")
                             .foregroundColor(.gray)
-                            .frame(width: 250, height: 100, alignment: .topLeading)
+                            .frame(width: 250, height: 80, alignment: .topLeading)
                             .padding(.leading, 25)
                             .padding(.top, 25)
+                    }
+                }
+                
+                HStack {
+                    Text("#태그")
+                        .font(.system(size: 17))
+                        .padding(.leading,26)
+                    
+                    Spacer()
+                }
+                ZStack(alignment: .topLeading) {
+                    TextEditor(text: $roomTag)
+                        .frame(width: 360, height: 40, alignment: .center)
+                        .overlay(RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray, lineWidth: 0.5))
+                        
+                    if roomTag.isEmpty {
+                        Text("# 모임의 태그를 입력하여 주세요.")
+                            .foregroundColor(.gray)
+                            .frame(width: 250, height: 40, alignment: .topLeading)
+                            .padding(.leading, 15)
+                            .padding(.top, 8)
                     }
                 }
             }
