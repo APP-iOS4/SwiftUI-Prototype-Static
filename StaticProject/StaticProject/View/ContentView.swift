@@ -34,20 +34,38 @@ struct ContentView: View {
                 Spacer()
                 
                 VStack {
-                    Image("btnG_official")
-                        .resizable()
-                        .scaledToFit()
-                        .modifier(SocialLoginButtonFrame())
+                    NavigationLink(destination: MainView(), label: {
+                        Button {
+                            isLogin.toggle()
+                        } label: {
+                            Image("btnG_official")
+                                .resizable()
+                                .scaledToFit()
+                                .modifier(SocialLoginButtonFrame())
+                        }
+                    })
                     
-                    Image("kakao_login_medium_narrow")
-                        .resizable()
-                        .scaledToFit()
-                        .modifier(SocialLoginButtonFrame())
+                    NavigationLink(destination: MainView(), label: {
+                        Button {
+                            isLogin.toggle()
+                        } label: {
+                            Image("kakao_login_medium_narrow")
+                                .resizable()
+                                .scaledToFit()
+                                .modifier(SocialLoginButtonFrame())
+                        }
+                    })
                     
-                    Image("ios_light_sq_SI")
-                        .resizable()
-                        .scaledToFit()
-                        .modifier(SocialLoginButtonFrame())
+                    NavigationLink(destination: MainView(), label: {
+                        Button {
+                            isLogin.toggle()
+                        } label: {
+                            Image("ios_light_sq_SI")
+                                .resizable()
+                                .scaledToFit()
+                                .modifier(SocialLoginButtonFrame())
+                        }
+                    })
                 }
                 Spacer()
             }
