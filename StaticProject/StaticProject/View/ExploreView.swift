@@ -9,89 +9,247 @@ import SwiftUI
 
 struct ExploreView: View {
     
+    @State private var selectedDateTag: DateCase = .Today
     @State private var searchText: String = ""
-
+    @State private var selectedCategory: Category? = nil
+    @State private var checkIsOnline: Bool = false
+    @State private var isShowingCreateRoomView: Bool = false
+    
     let roomStore: RoomStore = RoomStore()
     let lazyHGridRow: [GridItem] = [.init(.fixed(130.0)), .init(.fixed(130.0))]
     
     var body: some View {
         
-        NavigationView{
-            List {
-                
-                HStack(spacing: 40.0) {
-                    Spacer()
-                    DateButton()
-                    DateButton()
-                    DateButton()
-                    Spacer()
+        ZStack {
+            NavigationView {
+                List {
+                    
+                    HStack(spacing: 40.0) {
+                        Spacer()
+                        DateButtonView(selectedDateTag: $selectedDateTag, tag: .Today)
+                        DateButtonView(selectedDateTag: $selectedDateTag, tag: .Tomorrow)
+                        DateButtonView(selectedDateTag: $selectedDateTag, tag: .DayAfterTomorrow)
+                        Spacer()
+                    }
+                    
+                    ScrollView(.horizontal, content: {
+                        LazyHGrid(rows: lazyHGridRow, content: {
+                            ForEach(Category.allCases, id: \.self,  content: { category in
+                                CategoryButton(selectedCategory: $selectedCategory, roomStore: roomStore, category: category)
+                            })
+                        })
+                    })
+                    .scaledToFit()
+                    
+                    ForEach(roomStore.searchedRooms, content: { room in
+                        TempRoomView(room: room)
+                    })
                 }
-                
-                ScrollView(.horizontal, content: {
-                    LazyHGrid(rows: lazyHGridRow, content: {
-                        CategoryButton()
-                        CategoryButton()
-                        CategoryButton()
-                        CategoryButton()
-                        CategoryButton()
-                        CategoryButton()
-                        CategoryButton()
-                        CategoryButton()
-                        CategoryButton()
-                        CategoryButton()
+                .navigationTitle("탐색")
+                .navigationBarTitleDisplayMode(.inline)
+                .listStyle(.plain)
+                .toolbar(content: {
+                    ToolbarItem(placement: .topBarTrailing, content: {
+                        Button(action: {
+                            isShowingCreateRoomView.toggle()
+                        }, label: {
+                            Label("Add Room", systemImage: "plus")
+                        })
                     })
                 })
-                .scaledToFit()
-                
-                ForEach(roomStore.allRooms, content: { room in
-                    Label("\(room.title)", systemImage: "photo")
-                })
             }
-            .navigationTitle("탐색")
-            .navigationBarTitleDisplayMode(.inline)
-            .listStyle(.plain)
+            .searchable(text: $searchText)
+            .keyboardShortcut(.escape)
+            .onSubmit(of: .search) {
+                print("\(searchText)")
+                // UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                roomStore.searchText = searchText
+            }
+            
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        checkIsOnline.toggle()
+                        roomStore.checkIsOnline = checkIsOnline
+                    }, label: {
+                        Text(checkIsOnline ? "ON" : "OFF")
+                    })
+                    .frame(width: 70, height: 70)
+                    .background(Color("MainColor"))
+                    .foregroundColor(Color.white)
+                    .clipShape(Circle())
+                    .padding()
+                }
+            }
         }
-        .searchable(text: $searchText)
-        .keyboardShortcut(.escape)
-        .onSubmit(of: .search) {
-            print("\(searchText)")
-            // UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-
-        }
+        .sheet(isPresented: $isShowingCreateRoomView, content: {
+            CreateRoomView()
+        })
+        
     }
 }
 
-struct DateButton: View {
+
+enum DateCase: Int {
+    case Today = 0
+    case Tomorrow = 1
+    case DayAfterTomorrow = 2
+}
+
+struct DateButtonView: View {
+    @Binding var selectedDateTag: DateCase
+    
+    let tag: DateCase
+    var week: String {
+        let calculatedDate = Date(timeIntervalSinceNow: 86400 * Double(tag.rawValue)) //내일
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier:"ko_KR")
+        dateFormatter.dateFormat = "E"
+        
+        return dateFormatter.string(from: calculatedDate)
+    }
+    var date: String {
+        let calculatedDate = Date(timeIntervalSinceNow: 86400 * Double(tag.rawValue)) //내일
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier:"ko_KR")
+        dateFormatter.dateFormat = "dd"
+        
+        return dateFormatter.string(from: calculatedDate)
+    }
+    
     var body: some View {
         Button(action: {
-            print("날짜 버튼 눌림")
-        }, label: {
+            selectedDateTag = tag
+            print("selectedDateTag: \(selectedDateTag)")
+        }) {
             VStack {
-                Text("월")
-                Text("19")
-                    .bold()
+                Text("\(week)")
+                    .font(.headline)
+                Text("\(date)")
+                    .font(.title)
             }
-            .frame(width: 60.0, height: 60.0)
-            .foregroundColor(Color.white)
-            .background(Color("MainColor"))
-            .clipShape(.circle)
-        })
+        }
+        .frame(width: 70, height: 70)
+        .background(selectedDateTag == tag ? Color("MainColor") : Color.gray)
+        .foregroundColor(Color.white)
+        .clipShape(Circle())
+        .border(Color.black, width: 2)
     }
 }
+
+
+
 
 struct CategoryButton: View {
+    @Binding var selectedCategory: Category?
+    
+    var currentColor: Color {
+        selectedCategory == category ? Color("MainColor") : .black
+    }
+    
+    let roomStore: RoomStore
+    let category: Category
+    
     var body: some View {
         Button(action: {
-            print("카테고리 버튼 눌림")
+            if selectedCategory == category {
+                selectedCategory = nil
+            } else {
+                selectedCategory = category
+            }
+            roomStore.selectedCategory = selectedCategory
+            
+            if let selectedCategory {
+                print("selectedCategory: \(selectedCategory.rawValue)")
+            } else {
+                print("selectedCategory: nil")
+            }
+            
         }, label: {
             VStack {
                 Image(systemName: "airplane.departure")
                     .frame(width: 90.0, height: 90.0)
                     .background(Color.gray)
-                    .clipShape(.buttonBorder)
-                Text("문화/공연/여행")
+                    .border(currentColor, width: 3)
+                Text("\(category.rawValue)")
             }
         })
+        .foregroundStyle(currentColor)
+    }
+}
+
+
+
+// MARK: Temp
+struct TempRoomView: View {
+    let room: Room
+    
+    // TODO: - 해당 변수 안쓰도록 수정
+    @State private var isParticipate: Bool = false
+    @State private var timeText: String = "16:40"
+    
+    var body: some View {
+        HStack {
+            Image("StaticLogobyDesigner")
+                .resizable()
+                .frame(width: 60, height:  60)
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1.5))
+            
+            VStack(alignment: .leading) {
+                Text(room.title)
+                    .bold()
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.3)
+                
+                HStack {
+                    Image(systemName: "mappin")
+                    
+                    Text(room.location)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.3)
+                    Text(timeText)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.3)
+                }
+                
+                HStack(spacing: 0) {
+                    Text("# \(room.category.rawValue) | \(room.ageLimit.rawValue)")
+                    // TODO: - "90W" 수정
+                    Text(" | 90W")
+                }
+                .font(.footnote)
+                .foregroundStyle(.gray)
+                .lineLimit(1)
+                .minimumScaleFactor(0.3)
+            }
+            
+            Spacer()
+            
+            VStack() {
+                // TODO: - "isParticipate"로 나뉘는 거 수정
+                if !isParticipate {
+                    Image(systemName: "hand.thumbsup")
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                        .foregroundColor(Color("MainColor"))
+                } else {
+                    Image(systemName: "hand.thumbsup.fill")
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                        .foregroundColor(Color("MainColor"))
+                }
+                
+                // TODO: - "참가" 부분 수정
+                Text("참가 (\(room.numberOfParticipants)/\(room.limitOfParticipants))")
+                    .font(.subheadline)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.3)
+            }
+        }
     }
 }
 

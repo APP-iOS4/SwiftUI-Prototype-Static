@@ -10,21 +10,30 @@ import Observation
 
 @Observable
 class RoomStore {
-    var allRooms: [Room] = []
+    var allRooms: [Room] = []                               // 모든 방 배열
     
-    var checkIsOnline: Bool = false
-    var date: String = "24-02-20"
-    var rooms: [Room] {
-        allRooms.filter{ ($0.isOnline == checkIsOnline) && ($0.date == date) }
+    var checkIsOnline: Bool = false                         // (온라인 vs 오프라인) 체크
+    var date: String = "2024-02-21"                           // 날짜
+    var rooms: [Room] {                                     // 메인 뷰 방 배열
+        allRooms.filter{ ($0.isOnline == checkIsOnline) && ($0.dateString == date) }
     }
     
-    var searchText: String = ""
-    var searchedRooms: [Room] {
+    var selectedCategory: Category?                         // 선택된 카테고리
+    var searchText: String = ""                             // 검색 텍스트
+    var searchedRooms: [Room] {                             // 검색된 방 배열
         rooms.filter({ (room: Room) -> Bool in
-            if room.title.localizedStandardContains(searchText) || room.category.rawValue.contains(searchText) {
-                return true
+            if let selectedCategory {
+                if room.title.localizedCaseInsensitiveContains(searchText) || room.category == selectedCategory {
+                    return true
+                } else {
+                    return false
+                }
             } else {
-                return false
+                if room.title.localizedCaseInsensitiveContains(searchText) || room.category.rawValue.contains(searchText) {
+                    return true
+                } else {
+                    return false
+                }
             }
         })
     }
@@ -33,73 +42,132 @@ class RoomStore {
         allRooms = [
             
             Room(
-                admin: "거니거니", date: "24-02-22", location: "서울시 강남구 양재동",
-                numberOfParticipants: 3, title: "온라인으로 캘리그라피",
-                limitOfParticipants: 4, isOnline: true, category: .Culture,
-                sexLimit: .None, ageLimit: .None
+                title: "온라인으로 캘리그라피", dateString: "2024-02-21", timeString: "16:30",
+                location: "서울시 강남구 양재동",
+                admin: UserStore.SampleUser(index: 0), limitOfParticipants: 4,
+                participants: [
+                    UserStore.SampleUser(index: 1),
+                    UserStore.SampleUser(index: 2),
+                ],
+                isOnline: true, category: .Culture, sexLimit: .None, ageLimit: .None
             ),
             
             Room(
-                admin: "유노윤호", date: "24-02-20", location: "경기 의정부시 청사로 1",
-                numberOfParticipants: 2, title: "(경기) 화요일 경도 할 사람?",
-                limitOfParticipants: 10, isOnline: false, category: .Sports,
-                sexLimit: .None, ageLimit: .Twenty
+                title: "(경기) 화요일 경도 할 사람?", dateString: "2024-02-21", timeString: "16:30",
+                location: "경기 의정부시 청사로 1",
+                admin: UserStore.SampleUser(index: 2), limitOfParticipants: 10,
+                participants: [
+                    UserStore.SampleUser(index: 0),
+                    UserStore.SampleUser(index: 1),
+                    UserStore.SampleUser(index: 3),
+                    UserStore.SampleUser(index: 4),
+                ],
+                isOnline: false, category: .Sports, sexLimit: .None, ageLimit: .Twenty
             ),
             
             Room(
-                admin: "주니영이", date: "24-02-20", location: "서울시 용산구 남산공원길",
-                numberOfParticipants: 4, title: "(서울) 같이 남산타워 가실분?",
-                limitOfParticipants: 4, isOnline: false, category: .OutDoorTrip,
-                sexLimit: .None, ageLimit: .Twenty
+                title: "(서울) 같이 남산타워 가실분?", dateString: "2024-02-22", timeString: "14:30",
+                location: "서울시 용산구 남산공원길",
+                admin: UserStore.SampleUser(index: 3), limitOfParticipants: 10,
+                participants: [
+                    UserStore.SampleUser(index: 0),
+                    UserStore.SampleUser(index: 1),
+                    UserStore.SampleUser(index: 2),
+                    UserStore.SampleUser(index: 4),
+                    UserStore.SampleUser(index: 5),
+                ],
+                isOnline: false, category: .OutDoorTrip, sexLimit: .None, ageLimit: .Twenty
             ),
             
             Room(
-                admin: "잼", date: "24-02-21", location: "서울시 강남구 양재동",
-                numberOfParticipants: 1, title: "롤",
-                limitOfParticipants: 5, isOnline: true, category: .Game,
-                sexLimit: .None, ageLimit: .UnderTen
+                title: "롤", dateString: "2024-02-21", timeString: "11:30",
+                location: "서울시 강남구 양재동",
+                admin: UserStore.SampleUser(index: 4), limitOfParticipants: 5,
+                participants: [
+                    
+                ],
+                isOnline: true, category: .Game, sexLimit: .None, ageLimit: .UnderTen
             ),
             
             Room(
-                admin: "구기서니", date: "24-02-20", location: "인천 부평구 장제로",
-                numberOfParticipants: 1, title: "XX 헬스장 같이 가실 분",
-                limitOfParticipants: 2, isOnline: false, category: .Game,
-                sexLimit: .None, ageLimit: .UnderTen
+                title: "같이 ABC 피트니스 가실분?", dateString: "2024-02-23", timeString: "20:30",
+                location: "인천 부평구 장제로",
+                admin: UserStore.SampleUser(index: 5), limitOfParticipants: 2,
+                participants: [
+    
+                ],
+                isOnline: false, category: .Sports, sexLimit: .OnlyFemale, ageLimit: .Twenty
             ),
             
-            // MARK: ---
+            // MARK: ----
             
             Room(
-                admin: "구기서니", date: "24-02-20", location: "인천 부평구 장제로",
-                numberOfParticipants: 1, title: "aBc",
-                limitOfParticipants: 2, isOnline: false, category: .Game,
-                sexLimit: .None, ageLimit: .UnderTen
-            ),
-            
-            Room(
-                admin: "구기서니", date: "24-02-20", location: "인천 부평구 장제로",
-                numberOfParticipants: 1, title: "DeF",
-                limitOfParticipants: 2, isOnline: false, category: .Game,
-                sexLimit: .None, ageLimit: .UnderTen
-            ),
-            
-            Room(
-                admin: "구기서니", date: "24-02-20", location: "인천 부평구 장제로",
-                numberOfParticipants: 1, title: "GhI",
-                limitOfParticipants: 2, isOnline: false, category: .Game,
-                sexLimit: .None, ageLimit: .UnderTen
+                title: "ABC", dateString: "2024-02-21", timeString: "16:30",
+                location: "서울시 강남구 양재동",
+                admin: UserStore.SampleUser(index: 0), limitOfParticipants: 2,
+                participants: [
+                ],
+                isOnline: true, category: .Crafts, sexLimit: .None, ageLimit: .None
             ),
             
             Room(
-                admin: "구기서니", date: "24-02-20", location: "인천 부평구 장제로",
-                numberOfParticipants: 1, title: "Jkl",
-                limitOfParticipants: 2, isOnline: false, category: .Game,
-                sexLimit: .None, ageLimit: .UnderTen
+                title: "DEF", dateString: "2024-02-21", timeString: "16:30",
+                location: "서울시 강남구 양재동",
+                admin: UserStore.SampleUser(index: 1), limitOfParticipants: 2,
+                participants: [
+                ],
+                isOnline: true, category: .Music, sexLimit: .None, ageLimit: .None
+            ),
+            
+            Room(
+                title: "GHI", dateString: "2024-02-21", timeString: "16:30",
+                location: "서울시 강남구 양재동",
+                admin: UserStore.SampleUser(index: 2), limitOfParticipants: 2,
+                participants: [
+                ],
+                isOnline: false, category: .Humanities, sexLimit: .None, ageLimit: .None
+            ),
+            
+            Room(
+                title: "Jkl", dateString: "2024-02-21", timeString: "16:30",
+                location: "서울시 강남구 양재동",
+                admin: UserStore.SampleUser(index: 3), limitOfParticipants: 2,
+                participants: [
+                ],
+                isOnline: false, category: .Job, sexLimit: .None, ageLimit: .None
+            ),
+            
+            Room(
+                title: "mnO", dateString: "2024-02-21", timeString: "16:30",
+                location: "서울시 강남구 양재동",
+                admin: UserStore.SampleUser(index: 4), limitOfParticipants: 2,
+                participants: [
+                ],
+                isOnline: true, category: .Language, sexLimit: .None, ageLimit: .None
+            ),
+            
+            Room(
+                title: "XYz", dateString: "2024-02-21", timeString: "16:30",
+                location: "서울시 강남구 양재동",
+                admin: UserStore.SampleUser(index: 5), limitOfParticipants: 2,
+                participants: [
+                ],
+                isOnline: false, category: .Music, sexLimit: .None, ageLimit: .None
             ),
         ]
     }
     
     func appendRoom(room: Room) {
         allRooms.append(room)
+    }
+    
+    // week = yyyy-MM-dd / time = HH:mm
+    func setRoomDate(week: String, time: String) -> Date {
+        let dateStr = "\(week) \(time)"
+                
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+                
+        return dateFormatter.date(from: dateStr) ?? Date() // Date 타입으로 변환
     }
 }
