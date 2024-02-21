@@ -22,7 +22,7 @@ struct DetailRoomView: View {
     @State private var selectedPersonnel = ""
     
     @State var isLiked: Bool = false
-    @State var isLikedNum: Int = 100
+    @State var isLikedNum: Int = 99
     
     var body: some View {
         ScrollView {
@@ -32,48 +32,76 @@ struct DetailRoomView: View {
                     Image(systemName: "figure.run")
                         .resizable()
                         .scaledToFit()
-                    
                         .frame(width: 250, height: 200, alignment: .center)
                         .padding(.horizontal, 50)
-                        .border(Color.black, width: 4)
-                        .cornerRadius(7)
+                        .overlay(RoundedRectangle(cornerRadius: 14)
+                                .stroke(Color.gray, lineWidth: 4))
                 }
                 Spacer()
                 
                 
-                Text("(서울) 가볍게 산책 할 사람 모여라~ ")
+                Text("(서울) 화요일 경도할 사람~ ")
                     .font(.system(size: 23))
-                    .frame(width: 350, height: 40, alignment: .leading)
+                    .frame(width: 360, height: 40, alignment: .leading)
                 
-                Text("현재 인원 5/10")
-                    .font(.system(size: 15))
-                    .frame(width: 300, height: 25, alignment: .trailing)
+                HStack {
+                    Text("# 운동/스포츠")
+                        .font(.system(size: 12))
+                        .frame(width: 180, height: 25, alignment: .leading)
+                        .foregroundColor(.gray)
+                    Text("현재 인원 5/10")
+                        .font(.system(size: 15))
+                    .frame(width: 150, height: 25, alignment: .trailing)
+                }
                 
                 HStack {
                     Text("위치")
                         .font(.system(size: 17))
                         .frame(alignment: .leading)
-                    .frame(width: 142, height: 25, alignment: .leading)
+                    .frame(width: 178, height: 25, alignment: .leading)
                     Image(systemName: "mappin.circle")
                         .tint(Color("MainColor"))
-                    Text("서울 종로구 창신동 청계천")
+                        .foregroundColor(.gray)
+                    Text("서울시 서초구 양재동")
                 }
-                
                 
                 HStack {
                     Text("날짜 및 시간")
                         .font(.system(size: 17))
                         .frame(alignment: .leading)
-                    .frame(width: 255, height: 25, alignment: .leading)
-                Text("2024.02.22")
+                        .frame(width: 210, height: 25, alignment: .leading)
+                    Text("2024.02.22 16:40")
                 }
                 
-                Text("참여 조건")
-                    .font(.system(size: 17))
-                    .frame(alignment: .leading)
-                    .frame(width: 350, height: 25, alignment: .leading)
+                HStack {
+                    Text("참여 조건")
+                        .font(.system(size: 17))
+                        .frame(alignment: .leading)
+                    .frame(width: 182, height: 25, alignment: .leading)
+                    Text("20대")
+                        .font(.system(size: 17))
+                        .frame(alignment: .leading)
+                        .foregroundColor(.white)
+                        .padding(8)
+                        .background(Color(red: 0.75, green: 0.75, blue: 0.75))
+                        .cornerRadius(10)
+                    Text("30대")
+                        .font(.system(size: 17))
+                        .frame(alignment: .leading)
+                        .foregroundColor(.white)
+                        .padding(8)
+                        .background(Color(red: 0.75, green: 0.75, blue: 0.75))
+                        .cornerRadius(10)
+                    Text("남성")
+                        .font(.system(size: 17))
+                        .frame(alignment: .leading)
+                        .foregroundColor(.white)
+                        .padding(8)
+                        .background(Color(red: 0.75, green: 0.75, blue: 0.75))
+                        .cornerRadius(10)
+                }
                 
-                    
+                
                 Divider()
                 
                 
@@ -84,12 +112,16 @@ struct DetailRoomView: View {
                 
                     .padding()
                 Text("""
-                     안녕하세요 😉
-                     1시간 내로 가볍게 청계천 산책할 사람을 모집합니다.
-                     혼자 걷긴 쓸쓸하니 심심하지 않게 말동무나
-                     하면서 가볍게 산책해 봅시다 🏃🏻🏃🏻‍♀️🏃🏻‍♂️
+                     
+                       안녕하세요 😉
+                       1시간 내로 가볍게 양재동 놀이터에서
+                       경도할 사람을 모집합니다.
+                       신체 건강한 분들 다 덤비세요.
+                       야무지게 놀아봅시다. 👮🏻🚓🦹🏻‍♀️
                      """)
-                    .frame(width: 340, height: 200, alignment: .topLeading)
+                .frame(width: 340, height: 200, alignment: .topLeading)
+                .overlay(RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.gray, lineWidth: 0.5))
             }
         }
         // 위 친구들을 스크롤 뷰로 구현 예정
