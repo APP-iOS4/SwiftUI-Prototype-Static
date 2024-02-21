@@ -12,7 +12,12 @@ class UserStore {
     
     init () {
         users = [
-            User(nickName: "일이삼", userID: "user@apple.com", password: "1q2w3e4r!", staticScore: 100, location: "서울특별시 개포동")
+            User(nickName: "일이삼", userID: "user@apple.com", password: "1q2w3e4r!", staticScore: 100, location: "서울특별시 개포동"),
+            User(nickName: "거니거니", userID: "user@apple.com", password: "1q2w3e4r!", staticScore: 100, location: "서울특별시 개포동"),
+            User(nickName: "유노윤호", userID: "user@apple.com", password: "1q2w3e4r!", staticScore: 100, location: "서울특별시 개포동"),
+            User(nickName: "주니영이", userID: "user@apple.com", password: "1q2w3e4r!", staticScore: 100, location: "서울특별시 개포동"),
+            User(nickName: "잼", userID: "user@apple.com", password: "1q2w3e4r!", staticScore: 100, location: "서울특별시 개포동"),
+            User(nickName: "구기서니", userID: "user@apple.com", password: "1q2w3e4r!", staticScore: 100, location: "서울특별시 개포동"),
         ]
     }
     
@@ -36,5 +41,24 @@ class UserStore {
         }
         
         return nil
+    }
+    
+    
+    // MARK: - Temp
+    static func SampleUser(index: Int) -> User {
+        let users = [
+            User(nickName: "일이삼", userID: "user@apple.com", password: "1q2w3e4r!", staticScore: 100, location: "서울특별시 개포동"),
+            User(nickName: "거니거니", userID: "user@apple.com", password: "1q2w3e4r!", staticScore: 100, location: "서울특별시 개포동"),
+            User(nickName: "유노윤호", userID: "user@apple.com", password: "1q2w3e4r!", staticScore: 100, location: "서울특별시 개포동"),
+            User(nickName: "주니영이", userID: "user@apple.com", password: "1q2w3e4r!", staticScore: 100, location: "서울특별시 개포동"),
+            User(nickName: "잼", userID: "user@apple.com", password: "1q2w3e4r!", staticScore: 100, location: "서울특별시 개포동"),
+            User(nickName: "구기서니", userID: "user@apple.com", password: "1q2w3e4r!", staticScore: 100, location: "서울특별시 개포동"),
+        ]
+        
+        if index < 0 || index >= users.count {
+            return users[0]
+        } else {
+            return users[index]
+        }
     }
 }
