@@ -48,6 +48,8 @@ struct Room: Identifiable {
     // 이미지
     let image: String = ""                                          // 이미지
     
+    let wattLimit: Int
+    
     //MARK: - 함수
     
     // 참가인원 추가

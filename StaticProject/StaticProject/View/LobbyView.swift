@@ -22,6 +22,9 @@ struct LobbyView: View {
     // MARK: - Variables
     @State private var selectedDate: Int = 0
     @State private var timeInfo = "6:54:32"
+    @State private var isModalPresenting: Bool = false
+    let myTimer: RoomTimer = RoomTimer()
+    private var roomStore = RoomStore()
     
     // MARK: - Body
     var body: some View {
@@ -33,97 +36,63 @@ struct LobbyView: View {
             
             Divider()
             
-            VStack {
-                Text("모임 폭파까지 남은 시간")
-                Text(timeInfo)
+            VStack(alignment: .center) {
+                HStack(alignment: .center) {
+                    Spacer()
+                    Text("모임 폭파까지 남은 시간")
+                    Image(systemName: "alarm.waves.left.and.right.fill")
+                    Spacer()
+                }
+                // TODO: - Time 변경
+                //Text("6:54:01")
+                Text("\(myTimer.distanceWithNowAndToday)")
                     .foregroundStyle(Color("MainColor"))
             }
-            .font(.title3)
-            .bold()
-        
+            .fontWeight(.bold)
+            
             Divider()
             
             ZStack {
                 List {
                     switch selectedDate {
                     case 0:
-                        NavigationLink(destination: DetailRoomView(), label: {
-                            RoomView()
-                        })
+                        let todayRooms = roomStore.allRooms.filter { room in
+                            room.dateString ==  "2024-02-21"
+                        }
                         
-                        NavigationLink(destination: DetailRoomView(), label: {
-                            RoomView()
-                        })
                         
-                        NavigationLink(destination: DetailRoomView(), label: {
-                            RoomView()
-                        })
-                        
-                        NavigationLink(destination: DetailRoomView(), label: {
-                            RoomView()
-                        })
-                        
-                        NavigationLink(destination: DetailRoomView(), label: {
-                            RoomView()
-                        })
-                        
-                        NavigationLink(destination: DetailRoomView(), label: {
-                            RoomView()
-                        })
-                        
-                        NavigationLink(destination: DetailRoomView(), label: {
-                            RoomView()
-                        })
-                        
-                        NavigationLink(destination: DetailRoomView(), label: {
-                            RoomView()
-                        })
-                        
-                        NavigationLink(destination: DetailRoomView(), label: {
-                            RoomView()
-                        })
-                        
-                        NavigationLink(destination: DetailRoomView(), label: {
-                            RoomView()
-                        })
-                        
-                        NavigationLink(destination: DetailRoomView(), label: {
-                            RoomView()
-                        })
+                        ForEach(todayRooms) { todayRoom in
+                            NavigationLink(destination: DetailRoomView(), label: {
+                                RoomView(room: todayRoom)
+                            })
+                        }
                         
                     case 1:
-                        NavigationLink(destination: DetailRoomView(), label: {
-                            RoomView()
-                        })
-                        NavigationLink(destination: DetailRoomView(), label: {
-                            RoomView()
-                        })
+                        let tomorrowRooms = roomStore.allRooms.filter { room in
+                            room.dateString ==  "2024-02-22"
+                        }
+                        
+                        ForEach(tomorrowRooms) { tomorrowRoom in
+                            NavigationLink(destination: DetailRoomView(), label: {
+                                RoomView(room: tomorrowRoom)
+                            })
+                        }
                     case 2:
-                        NavigationLink(destination: DetailRoomView(), label: {
-                            RoomView()
-                        })
-                        NavigationLink(destination: DetailRoomView(), label: {
-                            RoomView()
-                        })
-                        NavigationLink(destination: DetailRoomView(), label: {
-                            RoomView()
-                        })
+                        let totomorrowRooms = roomStore.allRooms.filter { room in
+                            room.dateString ==  "2024-02-23"
+                        }
+                        
+                        ForEach(totomorrowRooms) { totomorrowRoom in
+                            NavigationLink(destination: DetailRoomView(), label: {
+                                RoomView(room: totomorrowRoom)
+                            })
+                        }
                     default:
-                        NavigationLink(destination: DetailRoomView(), label: {
-                            RoomView()
-                        })
-                        NavigationLink(destination: DetailRoomView(), label: {
-                            RoomView()
-                        })
-                        NavigationLink(destination: DetailRoomView(), label: {
-                            RoomView()
-                        })
-                        NavigationLink(destination: DetailRoomView(), label: {
-                            RoomView()
-                        })
-                        NavigationLink(destination: DetailRoomView(), label: {
-                            RoomView()
-                        })
+                        ForEach(roomStore.allRooms) { room in
+                            NavigationLink(destination: DetailRoomView(), label: {
+                                RoomView(room: room)
+                            })
+                        }
                     }
                 } // List
                 .listStyle(.plain)
@@ -132,7 +101,10 @@ struct LobbyView: View {
                     Spacer()
                     VStack {
                         Spacer()
-                        NavigationLink(destination: CreateRoomView(), label: {
+                        
+                        Button(action: {
+                            isModalPresenting = true
+                        }, label: {
                             Image(systemName: "plus")
                                 .font(.largeTitle)
                                 .frame(width: 70, height: 70)
@@ -140,6 +112,9 @@ struct LobbyView: View {
                                 .foregroundColor(Color.white)
                                 .clipShape(Circle())
                                 .padding()
+                        })
+                        .sheet(isPresented: $isModalPresenting, content: {
+                            CreateRoomView()
                         })
                     }
                 }
@@ -181,3 +156,5 @@ struct LobbyView: View {
 //            .padding()
 //    })
 //}
+
+

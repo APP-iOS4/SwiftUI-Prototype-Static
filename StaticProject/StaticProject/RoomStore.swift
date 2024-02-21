@@ -52,7 +52,7 @@ class RoomStore {
                     UserStore.SampleUser(index: 1),
                     UserStore.SampleUser(index: 2),
                 ],
-                isOnline: true, category: .Culture, sexLimit: .None, ageLimit: .None
+                isOnline: true, category: .Culture, sexLimit: .None, ageLimit: .None , wattLimit: 92
             ),
             
             Room(
@@ -65,7 +65,7 @@ class RoomStore {
                     UserStore.SampleUser(index: 3),
                     UserStore.SampleUser(index: 4),
                 ],
-                isOnline: false, category: .Sports, sexLimit: .None, ageLimit: .Twenty
+                isOnline: false, category: .Sports, sexLimit: .None, ageLimit: .Twenty, wattLimit: 90
             ),
             
             Room(
@@ -79,7 +79,7 @@ class RoomStore {
                     UserStore.SampleUser(index: 4),
                     UserStore.SampleUser(index: 5),
                 ],
-                isOnline: false, category: .OutDoorTrip, sexLimit: .None, ageLimit: .Twenty
+                isOnline: false, category: .OutDoorTrip, sexLimit: .None, ageLimit: .Twenty, wattLimit: 88
             ),
             
             Room(
@@ -89,7 +89,7 @@ class RoomStore {
                 participants: [
                     
                 ],
-                isOnline: true, category: .Game, sexLimit: .None, ageLimit: .UnderTen
+                isOnline: true, category: .Game, sexLimit: .None, ageLimit: .UnderTen, wattLimit: 95
             ),
             
             Room(
@@ -99,7 +99,7 @@ class RoomStore {
                 participants: [
     
                 ],
-                isOnline: false, category: .Sports, sexLimit: .OnlyFemale, ageLimit: .Twenty
+                isOnline: false, category: .Sports, sexLimit: .OnlyFemale, ageLimit: .Twenty, wattLimit: 100
             ),
             
             // MARK: ----
@@ -110,7 +110,7 @@ class RoomStore {
                 admin: UserStore.SampleUser(index: 0), limitOfParticipants: 2,
                 participants: [
                 ],
-                isOnline: true, category: .Crafts, sexLimit: .None, ageLimit: .None
+                isOnline: true, category: .Crafts, sexLimit: .None, ageLimit: .None, wattLimit: 100
             ),
             
             Room(
@@ -119,7 +119,7 @@ class RoomStore {
                 admin: UserStore.SampleUser(index: 1), limitOfParticipants: 2,
                 participants: [
                 ],
-                isOnline: true, category: .Music, sexLimit: .None, ageLimit: .None
+                isOnline: true, category: .Music, sexLimit: .None, ageLimit: .None, wattLimit: 70
             ),
             
             Room(
@@ -128,7 +128,7 @@ class RoomStore {
                 admin: UserStore.SampleUser(index: 2), limitOfParticipants: 2,
                 participants: [
                 ],
-                isOnline: false, category: .Humanities, sexLimit: .None, ageLimit: .None
+                isOnline: false, category: .Humanities, sexLimit: .None, ageLimit: .None, wattLimit: 60
             ),
             
             Room(
@@ -137,7 +137,7 @@ class RoomStore {
                 admin: UserStore.SampleUser(index: 3), limitOfParticipants: 2,
                 participants: [
                 ],
-                isOnline: false, category: .Job, sexLimit: .None, ageLimit: .None
+                isOnline: false, category: .Job, sexLimit: .None, ageLimit: .None, wattLimit: 80
             ),
             
             Room(
@@ -146,7 +146,7 @@ class RoomStore {
                 admin: UserStore.SampleUser(index: 4), limitOfParticipants: 2,
                 participants: [
                 ],
-                isOnline: true, category: .Language, sexLimit: .None, ageLimit: .None
+                isOnline: true, category: .Language, sexLimit: .None, ageLimit: .None, wattLimit: 95
             ),
             
             Room(
@@ -155,7 +155,7 @@ class RoomStore {
                 admin: UserStore.SampleUser(index: 5), limitOfParticipants: 2,
                 participants: [
                 ],
-                isOnline: false, category: .Music, sexLimit: .None, ageLimit: .None
+                isOnline: false, category: .Music, sexLimit: .None, ageLimit: .None, wattLimit: 92
             ),
         ]
     }
