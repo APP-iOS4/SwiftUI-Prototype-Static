@@ -2,24 +2,12 @@
 //  DetailRoomView.swift
 //  StaticProject
 //
-//  Created by 하윤호 on 2/20/24.
+//  Created by 최준영 on 2/20/24.
 //
 
 import SwiftUI
 
 struct DetailRoomView: View {
-    @State var roomIntroduce: String = ""
-    @State var roomName: String = ""
-    @State var roomParty: String = ""
-    
-    @State private var roomDate = Date()
-    
-    
-    let categories = ["운동", "음악", "맛집", "문화", "게임","소통"]
-    let personnel = ["5명", "10명", "20명", "100명"]
-    
-    @State private var selectedCategory = ""
-    @State private var selectedPersonnel = ""
     
     @State var isLiked: Bool = false
     @State var isLikedNum: Int = 99
@@ -124,42 +112,67 @@ struct DetailRoomView: View {
                         .stroke(Color.gray, lineWidth: 0.5))
             }
         }
-        // 위 친구들을 스크롤 뷰로 구현 예정
         
+//======================================================== // 하트 + 참가 선청
+//        HStack {
+//            Button {
+//                isLiked.toggle()
+//                if isLiked {
+//                    isLikedNum += 1
+//                } else {
+//                    isLikedNum -= 1
+//                }
+//            } label: {
+//                if isLiked {
+//                    VStack {
+//                        Text(Image(systemName: "heart.fill"))
+//                        Text("\(isLikedNum)")
+//                    }
+//                } else {
+//                    VStack {
+//                        Text(Image(systemName: "heart"))
+//                        Text("\(isLikedNum)")
+//                    }
+//                }
+//            }
+//            .frame(width: 60, height: 60, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+//            
+//            
+//            Button {
+//                // 생성하기 버튼 클릭 시 기능 구현
+//            } label: {
+//                Text("참여하기")
+//                    .frame(width: 250, height: 40, alignment: .center)
+//                    .bold()
+//            }
+//            .buttonStyle(.borderedProminent)
+//        }
+//        .tint(Color("MainColor"))
+        
+//======================================================== (톡방, 나가기 뷰)
         HStack {
             Button {
-                isLiked.toggle()
-                if isLiked {
-                    isLikedNum += 1
-                } else {
-                    isLikedNum -= 1
-                }
+                // 톡방으로 이동
             } label: {
-                if isLiked {
-                    VStack {
-                        Text(Image(systemName: "heart.fill"))
-                        Text("\(isLikedNum)")
-                    }
-                } else {
-                    VStack {
-                        Text(Image(systemName: "heart"))
-                        Text("\(isLikedNum)")
-                    }
-                }
+                Image(systemName: "message")
+                    .resizable()
+                    
             }
-            .frame(width: 60, height: 60, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            
+            .frame(width: 40, height: 40, alignment: .center)
+            .padding(.trailing, 7)
             
             Button {
                 // 생성하기 버튼 클릭 시 기능 구현
             } label: {
-                Text("참여하기")
+                Text("나가기")
                     .frame(width: 250, height: 40, alignment: .center)
                     .bold()
             }
             .buttonStyle(.borderedProminent)
         }
         .tint(Color("MainColor"))
+        
+        //---------------------------------------------------
     }
 }
 

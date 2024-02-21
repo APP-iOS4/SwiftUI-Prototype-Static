@@ -2,31 +2,36 @@
 //  CreateRoomView.swift
 //  StaticProject
 //
-//  Created by 하윤호 on 2/20/24.
+//  Created by 최준영 on 2/20/24.
 //
 
 import SwiftUI
 
 struct CreateRoomView: View {
-    @State var roomIntroduce: String = ""
-    @State var roomTag: String = ""
-    @State var roomName: String = ""
-    @State var roomParty: String = ""
-    @State var personnel: Int = 0
-    
+    @State private var roomIntroduce: String = ""
+    @State private var roomTag: String = ""
+    @State private var roomName: String = ""
+    @State private var roomParty: String = ""
+    @State private var personnel: Int = 0
+    @State private var selectedCategory = ""
     @State private var roomDate = Date()
     
-    let categories = ["운동", "음악", "맛집", "문화", "게임","소통"]
+    private var columns: [GridItem] = [
+        GridItem(.flexible(minimum: .minimum(80, 80), maximum: .maximum(80, 80))),
+        GridItem(.flexible(minimum: .minimum(80, 80), maximum: .maximum(80, 80))),
+        GridItem(.flexible(minimum: .minimum(80, 80), maximum: .maximum(80, 80))),
+        GridItem(.flexible(minimum: .minimum(80, 80), maximum: .maximum(80, 80)))
+    ]
     
-    @State private var selectedCategory = ""
+    let categories = [
+        "운동/헬스", "독서", "음악/악기", "드라이브", "여행", "공부", "문화/예술", "언어", "맛집투어", "봉사활동", "산책", "소통"
+    ]
     
     var body: some View {
         ScrollView {
             VStack {
-                Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
+                Spacer(minLength: 60)
+                
                 ZStack(alignment: .bottomTrailing) {
                     Image("StaticLogobyDesigner")
                         .resizable()
@@ -64,16 +69,7 @@ struct CreateRoomView: View {
                         .stroke(Color.gray, lineWidth: 0.5))
                 
                 .padding(.bottom, 20)
-                
-//                Picker("종류를 선택하세요.", selection: $selectedCategory) {
-//                    ForEach(categories, id: \.self) {
-//                        Text($0)
-//                    }
-//                }
-//                .pickerStyle(.palette)
-//                .background()
-//                .padding(.bottom, 20)
-                
+            
                 
                 HStack {
                     Text("인원")
@@ -95,7 +91,7 @@ struct CreateRoomView: View {
                     
                     Text("\(personnel)")
                         .font(.title3)
-                        
+                        .padding(.horizontal)
                     
                     Button{
                         personnel += 1
@@ -132,95 +128,28 @@ struct CreateRoomView: View {
                     Spacer()
                 }
                 
-                Grid {
-                    GridRow {
-                        Button {
-                            
+                
+                LazyVGrid(columns: columns,  spacing: 6) {
+                    ForEach(categories, id: \.self) { category in
+                        Button(role: .destructive) {
+                            selectedCategory = category
                         } label: {
-                            Text("운동/헬스")
-                        }
-                        
-                        Button {
-                            // 색 변환 기능 구현
-                        } label: {
-                            Text("독서")
-                        }
-                        
-                        Button {
-                            // 색 변환 기능 구현
-                        } label: {
-                            Text("음악/악기")
-                        }
-                        
-                        Button {
-                            // 색 변환 기능 구현
-                        } label: {
-                            Text("드라이브")
-                        }
-                        
-                        Button {
-                            // 색 변환 기능 구현
-                        } label: {
-                            Text("여행")
-                        }
-                        
-                        Button {
-                            // 색 변환 기능 구현
-                        } label: {
-                            Text("공부")
-                        }
-                        
-                    }
-                    .font(.system(size: 15))
-                    .foregroundStyle(.gray)
-                    .padding(5)
-                    .overlay(RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.gray, lineWidth: 0.5))
-                    GridRow {
-                        Button {
-                            // 색 변환 기능 구현
-                        } label: {
-                            Text("문화/예술")
-                        }
-                        
-                        Button {
-                            // 색 변환 기능 구현
-                        } label: {
-                            Text("언어")
-                        }
-                        
-                        Button {
-                            // 색 변환 기능 구현
-                        } label: {
-                            Text("맛집투어")
-                        }
-                        
-                        Button {
-                            // 색 변환 기능 구현
-                        } label: {
-                            Text("봉사활동")
-                        }
-                        
-                        Button {
-                            // 색 변환 기능 구현
-                        } label: {
-                            Text("산책")
-                        }
-                        
-                        Button {
-                            // 색 변환 기능 구현
-                        } label: {
-                            Text("소통")
+                            VStack {
+                                Text(category)
+                                    .font(.system(size: 15))
+                                    .frame(width:80, height: 35)
+                                    .background(selectedCategory == category ? Color("MainColor") : .white)
+                                    .foregroundColor(selectedCategory == category ? .white : .gray)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 100)
+                                            .stroke(Color(.gray), lineWidth: 1.5))
+                                    .cornerRadius(50)
+                            }
                         }
                     }
-                    .font(.system(size: 15))
-                    .foregroundStyle(.gray)
-                    .padding(5)
-                    .overlay(RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.gray, lineWidth: 0.5))
-                    .padding(.bottom, 10)
+                    .padding(.horizontal)
                 }
-            
+                .padding(.bottom, 15)
                 
                 Divider()
                 
@@ -260,7 +189,7 @@ struct CreateRoomView: View {
                         .frame(width: 360, height: 40, alignment: .center)
                         .overlay(RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray, lineWidth: 0.5))
-                        
+                    
                     if roomTag.isEmpty {
                         Text("# 모임의 태그를 입력하여 주세요.")
                             .foregroundColor(.gray)
@@ -286,6 +215,7 @@ struct CreateRoomView: View {
         .tint(Color("MainColor"))
     }
 }
+
 
 
 #Preview {
