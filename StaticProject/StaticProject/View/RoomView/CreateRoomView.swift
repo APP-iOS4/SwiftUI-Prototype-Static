@@ -200,6 +200,9 @@ struct CreateRoomView: View {
                     }
                 }
             }
+            .onTapGesture {
+                self.endTextEditing()
+            }
         }
         // 위 친구들을 스크롤 뷰로 구현 예정
         
@@ -217,7 +220,14 @@ struct CreateRoomView: View {
     }
 }
 
-
+extension CreateRoomView {
+    func endTextEditing() {
+        UIApplication.shared.sendAction(
+            #selector(UIResponder.resignFirstResponder),
+            to: nil, from: nil, for: nil
+        )
+    }
+}
 
 #Preview {
     CreateRoomView()

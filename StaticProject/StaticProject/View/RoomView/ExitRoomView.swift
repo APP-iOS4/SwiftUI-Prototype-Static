@@ -1,16 +1,13 @@
 //
-//  DetailRoomView.swift
+//  exitRoomView.swift
 //  StaticProject
 //
-//  Created by 최준영 on 2/20/24.
+//  Created by 최준영 on 2/21/24.
 //
 
 import SwiftUI
 
-struct DetailRoomView: View {
-    
-    @State var isLiked: Bool = false
-    @State var isLikedNum: Int = 99
+struct ExitRoomView: View {
     
     var body: some View {
         ScrollView {
@@ -112,46 +109,27 @@ struct DetailRoomView: View {
                     .stroke(Color.gray, lineWidth: 0.5))
             }
         }
-        participateRoomButtonView()
+        ExitRoomButtonView()
     }
 }
 
-
-// 하트 + 참여하기
-struct participateRoomButtonView: View {
-    
-    @State var isLiked: Bool = false
-    @State var isLikedNum: Int = 99
+//(톡방, 나가기 뷰)
+struct ExitRoomButtonView: View {
     
     var body: some View {
         HStack {
-            Button {
-                isLiked.toggle()
-                if isLiked {
-                    isLikedNum += 1
-                } else {
-                    isLikedNum -= 1
-                }
-            } label: {
-                if isLiked {
-                    VStack {
-                        Text(Image(systemName: "heart.fill"))
-                        Text("\(isLikedNum)")
-                    }
-                } else {
-                    VStack {
-                        Text(Image(systemName: "heart"))
-                        Text("\(isLikedNum)")
-                    }
-                }
-            }
-            .frame(width: 60, height: 60, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            NavigationLink(destination: TalkView(), label: {
+                Image(systemName: "message")
+                    .resizable()
+            })
+            .frame(width: 40, height: 40, alignment: .center)
+            .padding(.trailing, 7)
             
             
             Button {
-                // 생성하기 버튼 클릭 시 기능 구현
+                // 나가기 버튼 클릭 시 기능 구현
             } label: {
-                Text("참여하기")
+                Text("나가기")
                     .frame(width: 250, height: 40, alignment: .center)
                     .bold()
             }
@@ -161,10 +139,6 @@ struct participateRoomButtonView: View {
     }
 }
 
-
-
-
-
 #Preview {
-    DetailRoomView()
+    NavigationStack{ ExitRoomView() }
 }
