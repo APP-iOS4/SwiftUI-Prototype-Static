@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ExploreView: View {
     
+    let user: User = UserStore.SampleUser(index: 0)
+    let myTimer: MyTimer = MyTimer()
+    
     @State private var selectedDateTag: DateCase = .Today
     @State private var searchText: String = ""
     @State private var selectedCategory: Category? = nil
@@ -32,6 +35,31 @@ struct ExploreView: View {
                         Spacer()
                     }
                     
+                    VStack(alignment: .center) {
+                        HStack(alignment: .center) {
+                            Spacer()
+                            Text("모임 폭파까지 남은 시간")
+                            Image(systemName: "alarm.waves.left.and.right.fill")
+                            Spacer()
+                        }
+                        // TODO: - Time 변경
+                        //Text("6:54:01")
+                        Text("\(myTimer.distanceWithNowAndToday)")
+                            .foregroundStyle(Color("MainColor"))
+                    }
+                    .fontWeight(.bold)
+                    
+                    
+                    // 온라인 vs 오프라인 1번 방법
+                        Toggle(isOn: $checkIsOnline, label: {
+                            checkIsOnline ? Text("온라인") : Text("오프라인")
+                        })
+                        .toggleStyle(.switch)
+                        .onChange(of: checkIsOnline, {
+                            roomStore.checkIsOnline = checkIsOnline
+                        })
+                    
+                    
                     ScrollView(.horizontal, content: {
                         LazyHGrid(rows: lazyHGridRow, content: {
                             ForEach(Category.allCases, id: \.self,  content: { category in
@@ -41,7 +69,7 @@ struct ExploreView: View {
                     })
                     .scaledToFit()
                     
-                    ForEach(roomStore.searchedRooms, content: { room in
+                    ForEach(roomStore.allRooms, content: { room in
                         TempRoomView(room: room)
                     })
                 }
@@ -66,6 +94,8 @@ struct ExploreView: View {
                 roomStore.searchText = searchText
             }
             
+            
+            // 여기가 온라인 오프라인 버튼임
             VStack {
                 Spacer()
                 HStack {
@@ -142,8 +172,6 @@ struct DateButtonView: View {
 }
 
 
-
-
 struct CategoryButton: View {
     @Binding var selectedCategory: Category?
     
@@ -187,10 +215,9 @@ struct CategoryButton: View {
 // MARK: Temp
 struct TempRoomView: View {
     let room: Room
+    let user: User = UserStore.SampleUser(index: 0)
     
-    // TODO: - 해당 변수 안쓰도록 수정
-    @State private var isParticipate: Bool = false
-    @State private var timeText: String = "16:40"
+    // 건님 여기 있던거 없앴어요
     
     var body: some View {
         HStack {
@@ -211,7 +238,7 @@ struct TempRoomView: View {
                     Text(room.location)
                         .lineLimit(1)
                         .minimumScaleFactor(0.3)
-                    Text(timeText)
+                    Text(room.timeString)
                         .lineLimit(1)
                         .minimumScaleFactor(0.3)
                 }
@@ -231,13 +258,13 @@ struct TempRoomView: View {
             
             VStack() {
                 // TODO: - "isParticipate"로 나뉘는 거 수정
-                if !isParticipate {
-                    Image(systemName: "hand.thumbsup")
+                if room.isParticipateRoom(user: user) {
+                    Image(systemName: "hand.thumbsup.fill")
                         .resizable()
                         .frame(width: 40, height: 40)
                         .foregroundColor(Color("MainColor"))
                 } else {
-                    Image(systemName: "hand.thumbsup.fill")
+                    Image(systemName: "hand.thumbsup")
                         .resizable()
                         .frame(width: 40, height: 40)
                         .foregroundColor(Color("MainColor"))
