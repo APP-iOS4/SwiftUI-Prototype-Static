@@ -19,27 +19,74 @@ import SwiftUI
 //
 
 struct LobbyView: View {
+    // MARK: - Variables
     @State private var selectedDate: Int = 0
-
+    @State private var timeInfo = "6:54:32"
+    
+    // MARK: - Body
     var body: some View {
-            ButtonView(selectedDate: $selectedDate)
+        
+        ButtonView(selectedDate: $selectedDate)
+            .padding(10)
+        
+        VStack {
+            
+            Divider()
             
             VStack {
-                
-                Divider()
-                
+                Text("모임 폭파까지 남은 시간")
+                Text(timeInfo)
+                    .foregroundStyle(Color("MainColor"))
+            }
+            .font(.title3)
+            .bold()
+        
+            Divider()
+            
+            ZStack {
                 List {
                     switch selectedDate {
                     case 0:
                         NavigationLink(destination: DetailRoomView(), label: {
                             RoomView()
                         })
+                        
                         NavigationLink(destination: DetailRoomView(), label: {
                             RoomView()
                         })
+                        
                         NavigationLink(destination: DetailRoomView(), label: {
                             RoomView()
                         })
+                        
+                        NavigationLink(destination: DetailRoomView(), label: {
+                            RoomView()
+                        })
+                        
+                        NavigationLink(destination: DetailRoomView(), label: {
+                            RoomView()
+                        })
+                        
+                        NavigationLink(destination: DetailRoomView(), label: {
+                            RoomView()
+                        })
+                        
+                        NavigationLink(destination: DetailRoomView(), label: {
+                            RoomView()
+                        })
+                        
+                        NavigationLink(destination: DetailRoomView(), label: {
+                            RoomView()
+                        })
+                        
+                        NavigationLink(destination: DetailRoomView(), label: {
+                            RoomView()
+                        })
+                        
+                        NavigationLink(destination: DetailRoomView(), label: {
+                            RoomView()
+                        })
+                        
                         NavigationLink(destination: DetailRoomView(), label: {
                             RoomView()
                         })
@@ -78,13 +125,41 @@ struct LobbyView: View {
                             RoomView()
                         })
                     }
-                }
+                } // List
                 .listStyle(.plain)
                 
+                HStack {
+                    Spacer()
+                    VStack {
+                        Spacer()
+                        NavigationLink(destination: CreateRoomView(), label: {
+                            Image(systemName: "plus")
+                                .font(.largeTitle)
+                                .frame(width: 70, height: 70)
+                                .background(Color("MainColor"))
+                                .foregroundColor(Color.white)
+                                .clipShape(Circle())
+                                .padding()
+                        })
+                    }
+                }
             }
-            .navigationTitle("메인 화면")
-            .navigationBarTitleDisplayMode(.inline)
+        } // VStack
+        .navigationTitle("메인 화면")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarLeading) {
+                Button {
+                    
+                } label: {
+                    Image(systemName: "map.fill")
+                        .foregroundStyle(Color("MainColor"))
+                    Text("개포동")
+                        .foregroundStyle(.black)
+                }
+            }
         }
+    }
 }
 
 #Preview {
@@ -170,10 +245,8 @@ struct ButtonView: View {
                 selectedDate = 0
             }) {
                 VStack {
-                    Text("월")
-                        .font(.headline)
-                    Text("19")
-                        .font(.title)
+                    Text("오늘")
+                        .font(.title2)
                 }
             }
             .frame(width: 70, height: 70)
@@ -185,10 +258,8 @@ struct ButtonView: View {
                 selectedDate = 1
             }) {
                 VStack {
-                    Text("화")
-                        .font(.headline)
-                    Text("20")
-                        .font(.title)
+                    Text("내일")
+                        .font(.title2)
                 }
             }
             .frame(width: 70, height: 70)
@@ -200,10 +271,8 @@ struct ButtonView: View {
                 selectedDate = 2
             }) {
                 VStack {
-                    Text("수")
-                        .font(.headline)
-                    Text("21")
-                        .font(.title)
+                    Text("모레")
+                        .font(.title2)
                 }
             }
             .frame(width: 70, height: 70)
@@ -214,3 +283,18 @@ struct ButtonView: View {
         }
     }
 }
+
+
+//Spacer()
+//HStack {
+//    Spacer()
+//    NavigationLink(destination: CreateRoomView(), label: {
+//        Image(systemName: "plus")
+//            .font(.largeTitle)
+//            .frame(width: 70, height: 70)
+//            .background(Color("MainColor"))
+//            .foregroundColor(Color.white)
+//            .clipShape(Circle())
+//            .padding()
+//    })
+//}
