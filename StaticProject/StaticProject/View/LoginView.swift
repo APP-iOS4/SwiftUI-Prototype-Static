@@ -64,6 +64,9 @@ struct LoginView: View {
             Spacer()
                 
         }
+        .onTapGesture {
+            self.endTextEditing()
+        }
     }
 }
 
@@ -82,5 +85,14 @@ struct MyTextFieldStyle: TextFieldStyle {
                 .stroke(focused ? Color("MainColor") : Color(UIColor.systemGray5), lineWidth: 1)
         )
         .padding(5)
+    }
+}
+
+extension View {
+    func endTextEditing() {
+        UIApplication.shared.sendAction(
+            #selector(UIResponder.resignFirstResponder),
+            to: nil, from: nil, for: nil
+        )
     }
 }
