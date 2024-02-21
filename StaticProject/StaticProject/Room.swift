@@ -7,40 +7,6 @@
 
 import Foundation
 
-enum Category: String, CaseIterable {
-    case OutDoorTrip = "아웃도어/여행"
-    case Volunteer = "봉사활동"
-    case Humanities = "인문학/책/글"
-    case Language = "외국/언어"
-    case Music = "음악/악기"
-    case Sports = "운동/스포츠"
-    case Ride = "차/오토바이"
-    case Job = "업종/직무"
-    case Culture = "문화/공연/축제"
-    case Crafts = "공예/만들기"
-    case Game = "게임"
-}
-
-enum SexLimit: String {
-    case None = "없음"
-    case OnlyFemale = "여자만"
-    case OnlyMale = "남자만"
-}
-
-enum AgeLimit: String {
-    case None = "없음"
-    case UnderTen = "10대 이하"
-    case Twenty = "20대"
-    case Thirty = "30대"
-    case Forty = "40대"
-    case Fifty = "50대"
-    case Sixty = "60대"
-    case Seventy = "70대"
-    case Eighty = "80대"
-    case OverNinety = "90대 이상"
-}
-
-
 struct Room: Identifiable {
     
     // MARK: - 변수

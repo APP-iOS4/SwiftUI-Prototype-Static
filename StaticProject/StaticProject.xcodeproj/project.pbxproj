@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F9AF3A12B861FF600CF5FC8 /* SexLimitsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9AF3A02B861FF600CF5FC8 /* SexLimitsEnum.swift */; };
+		1F9AF3A32B86202600CF5FC8 /* CategoryEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9AF3A22B86202600CF5FC8 /* CategoryEnum.swift */; };
+		1F9AF3A52B86204C00CF5FC8 /* AgeLimitsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9AF3A42B86204C00CF5FC8 /* AgeLimitsEnum.swift */; };
+		1F9AF3A72B86208700CF5FC8 /* RoomTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9AF3A62B86208700CF5FC8 /* RoomTimer.swift */; };
+		1F9AF3AA2B8621CD00CF5FC8 /* RoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9AF3A92B8621CD00CF5FC8 /* RoomView.swift */; };
+		1F9AF3AC2B86227400CF5FC8 /* DateButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9AF3AB2B86227300CF5FC8 /* DateButtonView.swift */; };
+		1F9AF3AE2B86234800CF5FC8 /* CategoryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9AF3AD2B86234800CF5FC8 /* CategoryButtonView.swift */; };
 		306B67892B843277006DC98E /* StaticProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306B67882B843277006DC98E /* StaticProjectApp.swift */; };
 		306B678B2B843277006DC98E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306B678A2B843277006DC98E /* ContentView.swift */; };
 		306B678D2B843278006DC98E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 306B678C2B843278006DC98E /* Assets.xcassets */; };
@@ -30,6 +37,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F9AF3A02B861FF600CF5FC8 /* SexLimitsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SexLimitsEnum.swift; sourceTree = "<group>"; };
+		1F9AF3A22B86202600CF5FC8 /* CategoryEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEnum.swift; sourceTree = "<group>"; };
+		1F9AF3A42B86204C00CF5FC8 /* AgeLimitsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeLimitsEnum.swift; sourceTree = "<group>"; };
+		1F9AF3A62B86208700CF5FC8 /* RoomTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTimer.swift; sourceTree = "<group>"; };
+		1F9AF3A92B8621CD00CF5FC8 /* RoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomView.swift; sourceTree = "<group>"; };
+		1F9AF3AB2B86227300CF5FC8 /* DateButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateButtonView.swift; sourceTree = "<group>"; };
+		1F9AF3AD2B86234800CF5FC8 /* CategoryButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtonView.swift; sourceTree = "<group>"; };
 		306B67852B843277006DC98E /* StaticProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StaticProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		306B67882B843277006DC98E /* StaticProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticProjectApp.swift; sourceTree = "<group>"; };
 		306B678A2B843277006DC98E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,6 +79,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F9AF39E2B861FAE00CF5FC8 /* RoomView */ = {
+			isa = PBXGroup;
+			children = (
+				306B67AA2B843423006DC98E /* CreateRoomView.swift */,
+				306B67AC2B843430006DC98E /* DetailRoomView.swift */,
+			);
+			path = RoomView;
+			sourceTree = "<group>";
+		};
+		1F9AF39F2B861FDF00CF5FC8 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				1F9AF3A02B861FF600CF5FC8 /* SexLimitsEnum.swift */,
+				1F9AF3A42B86204C00CF5FC8 /* AgeLimitsEnum.swift */,
+				1F9AF3A22B86202600CF5FC8 /* CategoryEnum.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		1F9AF3A82B86213400CF5FC8 /* PublicUseViews */ = {
+			isa = PBXGroup;
+			children = (
+				1F9AF3A92B8621CD00CF5FC8 /* RoomView.swift */,
+				1F9AF3AB2B86227300CF5FC8 /* DateButtonView.swift */,
+				1F9AF3AD2B86234800CF5FC8 /* CategoryButtonView.swift */,
+			);
+			path = PublicUseViews;
+			sourceTree = "<group>";
+		};
 		306B677C2B843277006DC98E = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +130,7 @@
 				306B67882B843277006DC98E /* StaticProjectApp.swift */,
 				306B67AE2B843434006DC98E /* View */,
 				306B679B2B8432FF006DC98E /* Model */,
+				1F9AF39F2B861FDF00CF5FC8 /* Enums */,
 				306B678C2B843278006DC98E /* Assets.xcassets */,
 				306B678E2B843278006DC98E /* StaticProject.entitlements */,
 				306B678F2B843278006DC98E /* Preview Content */,
@@ -109,6 +153,7 @@
 				306B67AF2B8440B3006DC98E /* UserStore.swift */,
 				306B67992B8432F2006DC98E /* Room.swift */,
 				306B67B12B8440BF006DC98E /* RoomStore.swift */,
+				1F9AF3A62B86208700CF5FC8 /* RoomTimer.swift */,
 				309F5F302B85CE8800A75339 /* Message.swift */,
 				309F5F322B85CECD00A75339 /* MessageStore.swift */,
 			);
@@ -118,6 +163,7 @@
 		306B67AE2B843434006DC98E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1F9AF3A82B86213400CF5FC8 /* PublicUseViews */,
 				306B678A2B843277006DC98E /* ContentView.swift */,
 				306B679E2B84339A006DC98E /* LoginView.swift */,
 				306B67A02B8433A5006DC98E /* SignupView.swift */,
@@ -126,8 +172,7 @@
 				306B67A42B8433D1006DC98E /* ExploreView.swift */,
 				306B67A62B8433F9006DC98E /* ParticipateView.swift */,
 				306B67A82B84340A006DC98E /* AccountView.swift */,
-				306B67AA2B843423006DC98E /* CreateRoomView.swift */,
-				306B67AC2B843430006DC98E /* DetailRoomView.swift */,
+				1F9AF39E2B861FAE00CF5FC8 /* RoomView */,
 				309F5F2E2B85C9B300A75339 /* TalkView.swift */,
 			);
 			path = View;
@@ -205,15 +250,21 @@
 			files = (
 				309F5F2F2B85C9B300A75339 /* TalkView.swift in Sources */,
 				306B67B22B8440BF006DC98E /* RoomStore.swift in Sources */,
+				1F9AF3AC2B86227400CF5FC8 /* DateButtonView.swift in Sources */,
 				306B67A12B8433A5006DC98E /* SignupView.swift in Sources */,
 				309F5F332B85CECD00A75339 /* MessageStore.swift in Sources */,
+				1F9AF3A52B86204C00CF5FC8 /* AgeLimitsEnum.swift in Sources */,
 				306B678B2B843277006DC98E /* ContentView.swift in Sources */,
 				306B67AD2B843430006DC98E /* DetailRoomView.swift in Sources */,
 				306B67892B843277006DC98E /* StaticProjectApp.swift in Sources */,
 				306B679A2B8432F2006DC98E /* Room.swift in Sources */,
+				1F9AF3A72B86208700CF5FC8 /* RoomTimer.swift in Sources */,
 				306B67A92B84340A006DC98E /* AccountView.swift in Sources */,
 				306B679F2B84339A006DC98E /* LoginView.swift in Sources */,
 				306B67A72B8433F9006DC98E /* ParticipateView.swift in Sources */,
+				1F9AF3AE2B86234800CF5FC8 /* CategoryButtonView.swift in Sources */,
+				1F9AF3A32B86202600CF5FC8 /* CategoryEnum.swift in Sources */,
+				1F9AF3AA2B8621CD00CF5FC8 /* RoomView.swift in Sources */,
 				306B67A32B8433B9006DC98E /* LobbyView.swift in Sources */,
 				306B67AB2B843423006DC98E /* CreateRoomView.swift in Sources */,
 				306B67A52B8433D1006DC98E /* ExploreView.swift in Sources */,
@@ -221,6 +272,7 @@
 				309F5F312B85CE8800A75339 /* Message.swift in Sources */,
 				B0405E652B84D3520014533B /* MainView.swift in Sources */,
 				306B67B02B8440B3006DC98E /* UserStore.swift in Sources */,
+				1F9AF3A12B861FF600CF5FC8 /* SexLimitsEnum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,10 +7,16 @@
 
 import SwiftUI
 
+enum DateCase: Int {
+    case Today = 0
+    case Tomorrow = 1
+    case DayAfterTomorrow = 2
+}
+
 struct ExploreView: View {
     
     let user: User = UserStore.SampleUser(index: 0)
-    let myTimer: MyTimer = MyTimer()
+    let myTimer: RoomTimer = RoomTimer()
     
     @State private var selectedDateTag: DateCase = .Today
     @State private var searchText: String = ""
@@ -29,9 +35,9 @@ struct ExploreView: View {
                     
                     HStack(spacing: 40.0) {
                         Spacer()
-                        DateButtonView(selectedDateTag: $selectedDateTag, tag: .Today)
-                        DateButtonView(selectedDateTag: $selectedDateTag, tag: .Tomorrow)
-                        DateButtonView(selectedDateTag: $selectedDateTag, tag: .DayAfterTomorrow)
+                        DateButtonView2(selectedDateTag: $selectedDateTag, tag: .Today)
+                        DateButtonView2(selectedDateTag: $selectedDateTag, tag: .Tomorrow)
+                        DateButtonView2(selectedDateTag: $selectedDateTag, tag: .DayAfterTomorrow)
                         Spacer()
                     }
                     
@@ -63,7 +69,7 @@ struct ExploreView: View {
                     ScrollView(.horizontal, content: {
                         LazyHGrid(rows: lazyHGridRow, content: {
                             ForEach(Category.allCases, id: \.self,  content: { category in
-                                CategoryButton(selectedCategory: $selectedCategory, roomStore: roomStore, category: category)
+                                CategoryButtonView(selectedCategory: $selectedCategory, roomStore: roomStore, category: category)
                             })
                         })
                     })
@@ -122,13 +128,9 @@ struct ExploreView: View {
 }
 
 
-enum DateCase: Int {
-    case Today = 0
-    case Tomorrow = 1
-    case DayAfterTomorrow = 2
-}
 
-struct DateButtonView: View {
+
+struct DateButtonView2: View {
     @Binding var selectedDateTag: DateCase
     
     let tag: DateCase
@@ -170,47 +172,6 @@ struct DateButtonView: View {
         .border(Color.black, width: 2)
     }
 }
-
-
-struct CategoryButton: View {
-    @Binding var selectedCategory: Category?
-    
-    var currentColor: Color {
-        selectedCategory == category ? Color("MainColor") : .black
-    }
-    
-    let roomStore: RoomStore
-    let category: Category
-    
-    var body: some View {
-        Button(action: {
-            if selectedCategory == category {
-                selectedCategory = nil
-            } else {
-                selectedCategory = category
-            }
-            roomStore.selectedCategory = selectedCategory
-            
-            if let selectedCategory {
-                print("selectedCategory: \(selectedCategory.rawValue)")
-            } else {
-                print("selectedCategory: nil")
-            }
-            
-        }, label: {
-            VStack {
-                Image(systemName: "airplane.departure")
-                    .frame(width: 90.0, height: 90.0)
-                    .background(Color.gray)
-                    .border(currentColor, width: 3)
-                Text("\(category.rawValue)")
-            }
-        })
-        .foregroundStyle(currentColor)
-    }
-}
-
-
 
 // MARK: Temp
 struct TempRoomView: View {
