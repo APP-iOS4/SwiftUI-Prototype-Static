@@ -21,45 +21,24 @@ struct SignupView: View {
     
     var body: some View {
         VStack {
+            LogoImageView()
             
             Spacer()
             
             VStack(alignment: .leading) {
                 Text("아이디")
-                TextField("이메일을 입력해주세요.", text: $id,  onEditingChanged:  { edit in
-                    
-                    isIdEditing = edit
-                })
-                    .textFieldStyle(MyTextFieldStyle(focused: $isIdEditing))
-                    .font(.title2)
-
+                TextField("이메일을 입력해주세요.", text: $id)
+                    .modifier(TextFieldFrame())
                 
                 Text("비밀번호")
-                SecureField("비밀번호를 입력해주세요", text: $password, onCommit: { isPasswordEditing = false })
-                    .onTapGesture {
-                        isPasswordEditing = true
-                    }
-                    .textFieldStyle(MyTextFieldStyle(focused: $isPasswordEditing))
-                    .font(.title2)
+                SecureField("비밀번호를 입력해주세요", text: $password)
+                    .modifier(TextFieldFrame())
                 
                 Text("비밀번호 확인")
-                SecureField("비밀번호를 입력해주세요", text: $passwordConfirm, onCommit: { isPasswordConfirmEditing = false })
-                    .onTapGesture {
-                        isPasswordConfirmEditing = true
-                    }
-                    .textFieldStyle(MyTextFieldStyle(focused: $isPasswordConfirmEditing))
-                    .font(.title2)
+                SecureField("비밀번호를 입력해주세요", text: $passwordConfirm)
+                    .modifier(TextFieldFrame())
             }
             .padding()
-            
-            
-//            Button {
-//                userStore.loginUser(id: id, password: password)
-//            } label: {
-//                Text("로그인")
-//                    .modifier(ButtonTitle())
-//            }
-//            .modifier(ButtonFrame())
             
             NavigationLink(destination: LoginView(), label: {
                 Text("회원가입")
