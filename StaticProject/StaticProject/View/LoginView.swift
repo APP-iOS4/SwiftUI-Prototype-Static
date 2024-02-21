@@ -13,7 +13,7 @@ struct LoginView: View {
     @State var loginError: String = "아이디 혹은 비밀번호를 다시 한번 확인해 주세요."
     @State var isIdEditing: Bool = false
     @State var isPasswordEditing: Bool = false
-    @State var isLogin: Bool = false
+    @Binding var isLogin: Bool
     
     let userStore: UserStore = UserStore()
     
@@ -39,8 +39,12 @@ struct LoginView: View {
                 .foregroundStyle(Color("MainColor"))
             
             NavigationLink(destination: MainView(), label: {
-                Text("로그인")
-                    .modifier(ButtonTitle())
+                Button {
+                    isLogin.toggle()
+                } label: {
+                    Text("로그인")
+                        .modifier(ButtonTitle())
+                }
             })
             .modifier(ButtonFrame())
             
@@ -54,7 +58,7 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView()
+    LoginView(isLogin: .constant(false))
 }
 
 struct MyTextFieldStyle: TextFieldStyle {
