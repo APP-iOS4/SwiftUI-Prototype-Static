@@ -14,7 +14,6 @@ struct CreateRoomView: View {
     
     @State private var roomDate = Date()
     
-    
     let categories = ["운동", "음악", "맛집", "문화", "게임","소통"]
     let personnel = ["5명", "10명", "20명", "100명"]
     
@@ -31,8 +30,8 @@ struct CreateRoomView: View {
                         .scaledToFit()
                         .frame(width: 250, height: 200, alignment: .center)
                         .padding(.horizontal, 50)
-                        .border(Color.black, width: 4)
-                        .cornerRadius(7)
+                        .overlay(RoundedRectangle(cornerRadius: 14)
+                            .stroke(Color.gray, lineWidth: 4))
                     
                     Button {
                         // 사진 추가하는 기능
@@ -50,11 +49,13 @@ struct CreateRoomView: View {
                 Text("모임 이름")
                     .font(.system(size: 17))
                     .frame(width: 350, height: 25, alignment: .leading)
+                
                 TextField(text: $roomName) {
-                    Text("모임 이름을 입력하여 주세요.")
+                    Text(" 모임의 이름을 입력하여 주세요.")
                 }
-                .frame(width: 350, height: 30, alignment: .center)
-                .border(Color.gray, width: 0.5)
+                .frame(width: 360, height: 30, alignment: .center)
+                .overlay(RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.gray, lineWidth: 0.5))
                 
                 
                 Text("종류")
@@ -62,11 +63,12 @@ struct CreateRoomView: View {
                     .frame(alignment: .leading)
                     .frame(width: 350, height: 25, alignment: .leading)
                 Picker("종류를 선택하세요.", selection: $selectedCategory) {
-                    ForEach(categories.indices, id: \.self) {
-                        Text(self.categories[$0])
+                    ForEach(categories, id: \.self) {
+                        Text($0)
                     }
                 }
                 .pickerStyle(.palette)
+                .background()
                 
                 
                 Text("인원")
@@ -74,8 +76,8 @@ struct CreateRoomView: View {
                     .frame(alignment: .leading)
                     .frame(width: 350, height: 25, alignment: .leading)
                 Picker("인원을 선택하세요.", selection: $selectedPersonnel) {
-                    ForEach(personnel.indices, id: \.self) { index in
-                        Text(self.personnel[index])
+                    ForEach(personnel, id: \.self) {
+                        Text($0)
                     }
                 }
                 .pickerStyle(.palette)
@@ -88,6 +90,7 @@ struct CreateRoomView: View {
                 
                 DatePicker("", selection: $roomDate)
                     .frame(width: 1, height: 50, alignment: .center)
+                    
                 //날짜 없애고 시간만???
                 
                 Divider()
@@ -98,13 +101,14 @@ struct CreateRoomView: View {
                     .frame(width: 350, height: 25, alignment: .leading)
                 ZStack(alignment: .topLeading) {
                     TextEditor(text: $roomIntroduce)
-                        .frame(width: 340, height: 100, alignment: .center)
-                        .border(Color.gray, width: 0.5)
+                        .frame(width: 360, height: 100, alignment: .center)
+                        .overlay(RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray, lineWidth: 0.5))
                         .padding()
                     if roomIntroduce.isEmpty {
-                        Text("모임의 소개를 적어주세요.")
+                        Text("모임의 소개를 입력하여 주세요.")
                             .foregroundColor(.gray)
-                            .frame(width: 200, height: 100, alignment: .topLeading)
+                            .frame(width: 250, height: 100, alignment: .topLeading)
                             .padding(.leading, 25)
                             .padding(.top, 25)
                     }
