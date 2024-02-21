@@ -112,16 +112,17 @@ struct DetailRoomView: View {
                     .stroke(Color.gray, lineWidth: 0.5))
             }
         }
+        participateRoomView()
     }
 }
 
 
-// 하트 + 참가 선청
+// 하트 + 참여하기
 struct participateRoomView: View {
     
     @State var isLiked: Bool = false
     @State var isLikedNum: Int = 99
-    //======================================================== // 하트 + 참가 선청
+    
     var body: some View {
         HStack {
             Button {
@@ -160,7 +161,8 @@ struct participateRoomView: View {
     }
 }
 
-//======================================================== (톡방, 나가기 뷰)
+
+// (톡방, 나가기 뷰)
 struct exitRoomView: View {
     
     var body: some View {
