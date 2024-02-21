@@ -108,18 +108,18 @@ struct Room: Identifiable {
         }
         
         // user가 참가하는지 확인해서 참가한다면 remove 이후 "true" 리턴
-        participants = participants.filter({ $0.id != user.id })
+        participants = participants.filter({ $0.nickName != user.nickName })
         return true
     }
     
     // user가 참가하는지 확인
     func isParticipateRoom(user: User) -> Bool {
         // user가 방장이라면 "true"를 리턴
-        if admin.id == user.id {
+        if admin.nickName == user.nickName {
             return true
         }
         // 방장이 아니고, participants 배열에 존재하면 "true"를 리턴 - 아니라면 "false"를 리턴
-        if participants.filter({ $0.id == user.id }).isEmpty {
+        if participants.filter({ $0.nickName == user.nickName }).isEmpty {
             return false
         } else {
             return true
