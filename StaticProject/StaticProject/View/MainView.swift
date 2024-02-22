@@ -36,7 +36,8 @@ struct MainView: View {
                 .tag(1)
                 
                 NavigationStack {
-                    ParticipateView()
+                    ParticipateView(user: UserStore.SampleUser(index: 0))
+                    // ParticipateView()
                 }
                 .tabItem {
                     Label("참가한 방", systemImage: "star.fill")

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RoomView: View {
-    @State private var isParticipate: Bool = false
+    
     let user: User = UserStore.SampleUser(index: 0)
     var room: Room
     
@@ -38,7 +38,6 @@ struct RoomView: View {
                 
                 HStack(spacing: 0) {
                     Text("# \(room.category.rawValue) | \(room.ageLimit.rawValue)")
-                    // TODO: - "90W" 수정
                     Text(" | \(room.wattLimit)W")
                 }
                 .font(.footnote)
@@ -50,7 +49,6 @@ struct RoomView: View {
             Spacer()
             
             VStack() {
-                // TODO: - "isParticipate"로 나뉘는 거 수정
                 if room.isParticipateRoom(user: user) {
                     Image(systemName: "hand.thumbsup.fill")
                         .resizable()
@@ -63,7 +61,6 @@ struct RoomView: View {
                         .foregroundColor(Color("MainColor"))
                 }
                 
-                // TODO: - "참가" 부분 수정
                 Text("참가 (\(room.numberOfParticipants)/\(room.limitOfParticipants))")
                     .font(.subheadline)
                     .lineLimit(1)

@@ -41,9 +41,13 @@ struct Room: Identifiable {
     
     // 태그
     var isOnline: Bool                                              // 온라인 ? 오프라인
+    var tagOnOffline: OnOfflineCases {
+        isOnline ? .OnlyOnline : .OnlyOffline
+    }
+    
     let category: Category                                          // 카테고리
     let sexLimit: SexLimit                                          // 성별 제한
-    let ageLimit: AgeLimit                                          // 나이 제한
+    let ageLimit: AgeLimit
     
     // 이미지
     let image: String = ""                                          // 이미지

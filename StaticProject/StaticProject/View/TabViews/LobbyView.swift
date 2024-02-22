@@ -23,8 +23,17 @@ struct LobbyView: View {
     @State private var selectedDate: Int = 0
     @State private var timeInfo = "6:54:32"
     @State private var isModalPresenting: Bool = false
-    let myTimer: RoomTimer = RoomTimer()
     private var roomStore = RoomStore()
+    // @State private var selectedDateTag: DateCases = .Today  // 날짜 선택 변수
+    
+    // MARK: - init
+    init() {
+        // roomStore.selectedDate
+        let todayDate = Date()
+        let dateFormatter: DateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        roomStore.selectedDate = dateFormatter.string(from: todayDate)
+    }
     
     // MARK: - Body
     var body: some View {
@@ -32,23 +41,21 @@ struct LobbyView: View {
         DateButtonView(selectedDate: $selectedDate)
             .padding(10)
         
+        // MARK: - 새 날짜
+//        HStack(spacing: 30) {
+//            Spacer()
+//            DateButtonView2(selectedDateTag: $selectedDateTag, roomStore: roomStore, dateTag: .Today)
+//            DateButtonView2(selectedDateTag: $selectedDateTag, roomStore: roomStore, dateTag: .Tomorrow)
+//            DateButtonView2(selectedDateTag: $selectedDateTag, roomStore: roomStore, dateTag: .DayAfterTomorrow)
+//            Spacer()
+//        }
+        // MARK: -
+        
         VStack {
             
             Divider()
             
-            VStack(alignment: .center) {
-                HStack(alignment: .center) {
-                    Spacer()
-                    Text("모임 폭파까지 남은 시간")
-                    Image(systemName: "alarm.waves.left.and.right.fill")
-                    Spacer()
-                }
-                // TODO: - Time 변경
-                //Text("6:54:01")
-                Text("\(myTimer.distanceWithNowAndToday)")
-                    .foregroundStyle(Color("MainColor"))
-            }
-            .fontWeight(.bold)
+            RoomBombTimerView()
             
             Divider()
             
@@ -96,6 +103,33 @@ struct LobbyView: View {
                     }
                 } // List
                 .listStyle(.plain)
+                
+                // MARK: - 추가 리스트
+//                if roomStore.filteredSearchRooms.isEmpty {
+//                    VStack(alignment: .center) {
+//                        HStack {
+//                            Spacer()
+//                            LogoImageView()
+//                            Spacer()
+//                        }
+//                        HStack {
+//                            Spacer()
+//                            Text("검색된 방이 없습니다.")
+//                            Spacer()
+//                        }
+//                    }
+//                } else {
+//                    List {
+//                        ForEach(roomStore.filteredDateRooms, content: { room in
+//                            NavigationLink(destination: DetailRoomView(), label: {
+//                                RoomView(room: room)
+//                            })
+//                        })
+//                    }
+//                    .listStyle(.plain)
+//                }
+                
+                // MARK: -
                 
                 HStack {
                     Spacer()
