@@ -95,7 +95,7 @@
 
 <br>
 
-|🚗<br>강건|☕️<br>이선준|🍪<br>최준영|🎧<br>하윤호|🎧<br>한국선|
+|💪<br>강건|🌚<br>이선준|🌝<br>최준영|🦦<br>하윤호|🎧<br>한국선|
 |:---:|:---:|:---:|:---:|:---:|
 |잼민이(제미나이) 너 내 동료가 돼라!|가랏! 찌리릿! 몸통박치기! 응?|정전기는 짜릿해 늘 새로워 최고야|피카츄는 귀엽습니다|찌리릿! 찟!! 찟찟!!|
 |<img src="https://avatars.githubusercontent.com/u/141600830?v=4" width="80%">|<img src="https://avatars.githubusercontent.com/u/115583150?v=4" width="80%">|<img src="https://avatars.githubusercontent.com/u/148533329?v=4" width="80%">|<img src="https://avatars.githubusercontent.com/u/101854288?v=4" width="80%">|<img src="https://avatars.githubusercontent.com/u/104252650?v=4" width="80%">|
