@@ -11,7 +11,7 @@ struct User: Identifiable {
     let id: UUID = UUID()
     let userID: String
     let password: String
-    let sex: String
+    let gender: String
     let age: Int
     
     var staticScore: Int

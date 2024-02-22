@@ -46,7 +46,7 @@ struct Room: Identifiable {
     }
     
     let category: Category                                          // 카테고리
-    let sexLimit: SexLimit                                          // 성별 제한
+    let sexLimit: GenderLimit                                          // 성별 제한
     let ageLimit: AgeLimit
     
     // 이미지

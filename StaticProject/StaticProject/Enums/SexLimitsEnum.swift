@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SexLimit: String {
+enum GenderLimit: String {
     case None = "없음"
     case OnlyFemale = "여자만"
     case OnlyMale = "남자만"

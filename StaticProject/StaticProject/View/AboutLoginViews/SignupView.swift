@@ -12,12 +12,16 @@ struct SignupView: View {
     @State var password: String = ""
     @State var passwordConfirm: String = ""
     @State var loginError: String = "아이디 혹은 비밀번호를 다시 한번 확인해 주세요."
+    @State var signUpWarningMessage: String = ""
     @State var isIdEditing: Bool = false
     @State var isPasswordEditing: Bool = false
     @State var selectionSex = 0
-    @State var age: String = "0"
+    @State var age: String = ""
+    @State var isSignUpCheck = false
     
     @Binding var isLogin: Bool
+    
+    @Environment (\.dismiss) var dismiss
     
     var selectSex = ["남", "여"]
     
@@ -57,14 +61,32 @@ struct SignupView: View {
             }
             .padding()
             
-            NavigationLink(destination: LoginView(isLogin: $isLogin), label: {
+            Text("\(signUpWarningMessage)")
+                .font(.footnote)
+                .foregroundStyle(Color("MainColor"))
+            
+            Button {
+                if (Int(age) ?? 0) <= 6 {
+                    signUpWarningMessage = "나이 만 6세 이상만 가입 가능합니다."
+                } else {
+                    isSignUpCheck = true
+                }
+                
+            } label: {
                 Text("회원가입")
                     .modifier(ButtonTitle())
-            })
+            }
             .modifier(ButtonFrame())
-            
+                
+
             Spacer()
                 
+        }
+        .onTapGesture {
+            self.endTextEditing()
+        }
+        .navigationDestination(isPresented: $isSignUpCheck) {
+            LoginView(isLogin: $isLogin)
         }
     }
 }
