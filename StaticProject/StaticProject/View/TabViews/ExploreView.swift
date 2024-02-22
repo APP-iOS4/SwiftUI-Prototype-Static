@@ -42,7 +42,7 @@ struct ExploreView: View {
                 Spacer()
             }
             
-            //List {
+//            List {
                 RoomBombTimerView()
                 
                 Picker("Which one you want to see?", selection: $selectedOnOfflineCases) {
@@ -56,7 +56,7 @@ struct ExploreView: View {
                     roomStore.selectedOnOfflineCase = selectedOnOfflineCases
                 })
                 
-                // Divider()
+                Divider()
                 
             // MARK: -
 //                ScrollView(.horizontal, content: {
@@ -85,10 +85,10 @@ struct ExploreView: View {
                                 .font(.system(size: 15))
                                 .frame(width:80, height: 35)
                                 .background(selectedCategory == category ? Color("MainColor") : Color(UIColor.systemBackground))
-                                .foregroundColor(selectedCategory == category ? .white : .gray)
+                                .foregroundColor(selectedCategory == category ? .white : .black)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 100)
-                                        .stroke(Color(.gray), lineWidth: 1.5))
+                                        .stroke(Color(.black), lineWidth: 1.5))
                                 .cornerRadius(50)
                         })
                     })
@@ -96,6 +96,7 @@ struct ExploreView: View {
                 })
                 .padding(.bottom, 15)
                 
+            // MARK: ---
                
                 // Divider()
                 List {

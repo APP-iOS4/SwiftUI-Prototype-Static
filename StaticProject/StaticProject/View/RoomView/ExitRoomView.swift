@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExitRoomView: View {
-    
+
     var body: some View {
         ScrollView {
             VStack {
@@ -116,6 +116,8 @@ struct ExitRoomView: View {
 //(톡방, 나가기 뷰)
 struct ExitRoomButtonView: View {
     
+    // @Environment(\.presentationMode) var presentation
+    
     var body: some View {
         HStack {
             NavigationLink(destination: TalkView(), label: {
@@ -128,6 +130,7 @@ struct ExitRoomButtonView: View {
             
             Button {
                 // 나가기 버튼 클릭 시 기능 구현
+                // presentation.wrappedValue.dismiss()
             } label: {
                 Text("나가기")
                     .frame(width: 250, height: 40, alignment: .center)
