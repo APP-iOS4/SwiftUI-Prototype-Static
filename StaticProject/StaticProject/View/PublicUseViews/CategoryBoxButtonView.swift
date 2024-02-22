@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CategoryButtonView: View {
+struct CategoryBoxButtonView: View {
     @Binding var selectedCategory: Category?
     
     var currentColor: Color {
@@ -37,7 +37,7 @@ struct CategoryButtonView: View {
                 Image(systemName: "airplane.departure")
                     .frame(width: 90.0, height: 90.0)
                     .background(Color.gray)
-                    .border(currentColor, width: 3)
+                    // .border(currentColor, width: 3)
                 Text("\(category.rawValue)")
             }
         })
@@ -46,5 +46,5 @@ struct CategoryButtonView: View {
 }
 
 #Preview {
-    CategoryButtonView(selectedCategory: .constant(Category.Game), roomStore: RoomStore(), category: .Crafts)
+    CategoryBoxButtonView(selectedCategory: .constant(Category.Game), roomStore: RoomStore(), category: .Culture)
 }

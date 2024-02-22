@@ -8,15 +8,16 @@
 import Foundation
 
 enum Category: String, CaseIterable {
-    case OutDoorTrip = "아웃도어/여행"
-    case Volunteer = "봉사활동"
-    case Humanities = "인문학/책/글"
-    case Language = "외국/언어"
+    case Sports = "운동/헬스"
+    case Reading = "책/독서"
     case Music = "음악/악기"
-    case Sports = "운동/스포츠"
-    case Ride = "차/오토바이"
-    case Job = "업종/직무"
-    case Culture = "문화/공연/축제"
-    case Crafts = "공예/만들기"
+    case Driving = "드라이브"
+    case Trip = "여행"
+    case Study = "공부"
+    case Culture = "문화/예술"
+    case Language = "언어"
+    case Food = "맛집투어"
+    case Walking = "산책"
     case Game = "게임"
+    case Communication = "소통"
 }

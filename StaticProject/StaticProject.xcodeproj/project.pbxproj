@@ -14,7 +14,11 @@
 		1F9AF3A72B86208700CF5FC8 /* RoomTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9AF3A62B86208700CF5FC8 /* RoomTimer.swift */; };
 		1F9AF3AA2B8621CD00CF5FC8 /* RoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9AF3A92B8621CD00CF5FC8 /* RoomView.swift */; };
 		1F9AF3AC2B86227400CF5FC8 /* DateButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9AF3AB2B86227300CF5FC8 /* DateButtonView.swift */; };
-		1F9AF3AE2B86234800CF5FC8 /* CategoryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9AF3AD2B86234800CF5FC8 /* CategoryButtonView.swift */; };
+		1F9AF3AE2B86234800CF5FC8 /* CategoryBoxButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9AF3AD2B86234800CF5FC8 /* CategoryBoxButtonView.swift */; };
+		1FE0DDBE2B86506C00F0465C /* RoomBombTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0DDBD2B86506C00F0465C /* RoomBombTimerView.swift */; };
+		1FE0DDC02B866E1000F0465C /* DateButtonView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0DDBF2B866E1000F0465C /* DateButtonView2.swift */; };
+		1FE0DDC92B86710700F0465C /* DateEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0DDC82B86710700F0465C /* DateEnum.swift */; };
+		1FE0DDCB2B86715900F0465C /* OnOfflineEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0DDCA2B86715900F0465C /* OnOfflineEnum.swift */; };
 		306B67892B843277006DC98E /* StaticProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306B67882B843277006DC98E /* StaticProjectApp.swift */; };
 		306B678B2B843277006DC98E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306B678A2B843277006DC98E /* ContentView.swift */; };
 		306B678D2B843278006DC98E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 306B678C2B843278006DC98E /* Assets.xcassets */; };
@@ -45,7 +49,11 @@
 		1F9AF3A62B86208700CF5FC8 /* RoomTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTimer.swift; sourceTree = "<group>"; };
 		1F9AF3A92B8621CD00CF5FC8 /* RoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomView.swift; sourceTree = "<group>"; };
 		1F9AF3AB2B86227300CF5FC8 /* DateButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateButtonView.swift; sourceTree = "<group>"; };
-		1F9AF3AD2B86234800CF5FC8 /* CategoryButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtonView.swift; sourceTree = "<group>"; };
+		1F9AF3AD2B86234800CF5FC8 /* CategoryBoxButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBoxButtonView.swift; sourceTree = "<group>"; };
+		1FE0DDBD2B86506C00F0465C /* RoomBombTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomBombTimerView.swift; sourceTree = "<group>"; };
+		1FE0DDBF2B866E1000F0465C /* DateButtonView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateButtonView2.swift; sourceTree = "<group>"; };
+		1FE0DDC82B86710700F0465C /* DateEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEnum.swift; sourceTree = "<group>"; };
+		1FE0DDCA2B86715900F0465C /* OnOfflineEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnOfflineEnum.swift; sourceTree = "<group>"; };
 		306B67852B843277006DC98E /* StaticProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StaticProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		306B67882B843277006DC98E /* StaticProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticProjectApp.swift; sourceTree = "<group>"; };
 		306B678A2B843277006DC98E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -97,6 +105,8 @@
 				1F9AF3A02B861FF600CF5FC8 /* SexLimitsEnum.swift */,
 				1F9AF3A42B86204C00CF5FC8 /* AgeLimitsEnum.swift */,
 				1F9AF3A22B86202600CF5FC8 /* CategoryEnum.swift */,
+				1FE0DDC82B86710700F0465C /* DateEnum.swift */,
+				1FE0DDCA2B86715900F0465C /* OnOfflineEnum.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -106,9 +116,60 @@
 			children = (
 				1F9AF3A92B8621CD00CF5FC8 /* RoomView.swift */,
 				1F9AF3AB2B86227300CF5FC8 /* DateButtonView.swift */,
-				1F9AF3AD2B86234800CF5FC8 /* CategoryButtonView.swift */,
+				1FE0DDBF2B866E1000F0465C /* DateButtonView2.swift */,
+				1F9AF3AD2B86234800CF5FC8 /* CategoryBoxButtonView.swift */,
+				1FE0DDBD2B86506C00F0465C /* RoomBombTimerView.swift */,
 			);
 			path = PublicUseViews;
+			sourceTree = "<group>";
+		};
+		1FE0DDC32B866F0B00F0465C /* AboutLoginViews */ = {
+			isa = PBXGroup;
+			children = (
+				306B678A2B843277006DC98E /* ContentView.swift */,
+				306B679E2B84339A006DC98E /* LoginView.swift */,
+				306B67A02B8433A5006DC98E /* SignupView.swift */,
+			);
+			path = AboutLoginViews;
+			sourceTree = "<group>";
+		};
+		1FE0DDC42B866F3A00F0465C /* TabViews */ = {
+			isa = PBXGroup;
+			children = (
+				306B67A22B8433B9006DC98E /* LobbyView.swift */,
+				306B67A42B8433D1006DC98E /* ExploreView.swift */,
+				306B67A62B8433F9006DC98E /* ParticipateView.swift */,
+				306B67A82B84340A006DC98E /* AccountView.swift */,
+			);
+			path = TabViews;
+			sourceTree = "<group>";
+		};
+		1FE0DDC52B866F9E00F0465C /* UserModels */ = {
+			isa = PBXGroup;
+			children = (
+				306B67972B8432CE006DC98E /* User.swift */,
+				306B67AF2B8440B3006DC98E /* UserStore.swift */,
+			);
+			name = UserModels;
+			sourceTree = "<group>";
+		};
+		1FE0DDC62B866FAC00F0465C /* RoomModels */ = {
+			isa = PBXGroup;
+			children = (
+				306B67992B8432F2006DC98E /* Room.swift */,
+				306B67B12B8440BF006DC98E /* RoomStore.swift */,
+				1F9AF3A62B86208700CF5FC8 /* RoomTimer.swift */,
+			);
+			name = RoomModels;
+			sourceTree = "<group>";
+		};
+		1FE0DDC72B866FCB00F0465C /* MessageModels */ = {
+			isa = PBXGroup;
+			children = (
+				309F5F302B85CE8800A75339 /* Message.swift */,
+				309F5F322B85CECD00A75339 /* MessageStore.swift */,
+			);
+			name = MessageModels;
 			sourceTree = "<group>";
 		};
 		306B677C2B843277006DC98E = {
@@ -152,13 +213,9 @@
 		306B679B2B8432FF006DC98E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				306B67972B8432CE006DC98E /* User.swift */,
-				306B67AF2B8440B3006DC98E /* UserStore.swift */,
-				306B67992B8432F2006DC98E /* Room.swift */,
-				306B67B12B8440BF006DC98E /* RoomStore.swift */,
-				1F9AF3A62B86208700CF5FC8 /* RoomTimer.swift */,
-				309F5F302B85CE8800A75339 /* Message.swift */,
-				309F5F322B85CECD00A75339 /* MessageStore.swift */,
+				1FE0DDC52B866F9E00F0465C /* UserModels */,
+				1FE0DDC62B866FAC00F0465C /* RoomModels */,
+				1FE0DDC72B866FCB00F0465C /* MessageModels */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -166,15 +223,10 @@
 		306B67AE2B843434006DC98E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1F9AF3A82B86213400CF5FC8 /* PublicUseViews */,
-				306B678A2B843277006DC98E /* ContentView.swift */,
-				306B679E2B84339A006DC98E /* LoginView.swift */,
-				306B67A02B8433A5006DC98E /* SignupView.swift */,
 				B0405E642B84D3520014533B /* MainView.swift */,
-				306B67A22B8433B9006DC98E /* LobbyView.swift */,
-				306B67A42B8433D1006DC98E /* ExploreView.swift */,
-				306B67A62B8433F9006DC98E /* ParticipateView.swift */,
-				306B67A82B84340A006DC98E /* AccountView.swift */,
+				1F9AF3A82B86213400CF5FC8 /* PublicUseViews */,
+				1FE0DDC32B866F0B00F0465C /* AboutLoginViews */,
+				1FE0DDC42B866F3A00F0465C /* TabViews */,
 				1F9AF39E2B861FAE00CF5FC8 /* RoomView */,
 				309F5F2E2B85C9B300A75339 /* TalkView.swift */,
 			);
@@ -257,6 +309,8 @@
 				1F9AF3AC2B86227400CF5FC8 /* DateButtonView.swift in Sources */,
 				306B67A12B8433A5006DC98E /* SignupView.swift in Sources */,
 				309F5F332B85CECD00A75339 /* MessageStore.swift in Sources */,
+				1FE0DDBE2B86506C00F0465C /* RoomBombTimerView.swift in Sources */,
+				1FE0DDCB2B86715900F0465C /* OnOfflineEnum.swift in Sources */,
 				1F9AF3A52B86204C00CF5FC8 /* AgeLimitsEnum.swift in Sources */,
 				306B678B2B843277006DC98E /* ContentView.swift in Sources */,
 				306B67AD2B843430006DC98E /* DetailRoomView.swift in Sources */,
@@ -265,11 +319,13 @@
 				1F9AF3A72B86208700CF5FC8 /* RoomTimer.swift in Sources */,
 				306B67A92B84340A006DC98E /* AccountView.swift in Sources */,
 				306B679F2B84339A006DC98E /* LoginView.swift in Sources */,
+				1FE0DDC92B86710700F0465C /* DateEnum.swift in Sources */,
 				306B67A72B8433F9006DC98E /* ParticipateView.swift in Sources */,
-				1F9AF3AE2B86234800CF5FC8 /* CategoryButtonView.swift in Sources */,
+				1F9AF3AE2B86234800CF5FC8 /* CategoryBoxButtonView.swift in Sources */,
 				1F9AF3A32B86202600CF5FC8 /* CategoryEnum.swift in Sources */,
 				1F9AF3AA2B8621CD00CF5FC8 /* RoomView.swift in Sources */,
 				306B67A32B8433B9006DC98E /* LobbyView.swift in Sources */,
+				1FE0DDC02B866E1000F0465C /* DateButtonView2.swift in Sources */,
 				306B67AB2B843423006DC98E /* CreateRoomView.swift in Sources */,
 				306B67A52B8433D1006DC98E /* ExploreView.swift in Sources */,
 				306B67982B8432CE006DC98E /* User.swift in Sources */,

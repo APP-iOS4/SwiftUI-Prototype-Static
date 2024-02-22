@@ -12,12 +12,26 @@ struct DetailRoomView: View {
     @State var isLiked: Bool = false
     @State var isLikedNum: Int = 99
     
+    var room: Room = Room(
+        title: "(경기) 화요일 경도 할 사람?", dateString: "2024-02-22", timeString: "16:30",
+        location: "경기 의정부시 청사로 1",
+        admin: UserStore.SampleUser(index: 2), limitOfParticipants: 10,
+        participants: [
+            UserStore.SampleUser(index: 0),
+            UserStore.SampleUser(index: 1),
+            UserStore.SampleUser(index: 3),
+            UserStore.SampleUser(index: 4),
+        ],
+        isOnline: false, category: .Sports, sexLimit: .None, ageLimit: .Twenty, wattLimit: 90
+    )
+    
     var body: some View {
         ScrollView {
             VStack {
                 Spacer()
                 ZStack(alignment: .bottomTrailing) {
                     Image(systemName: "figure.run")
+                    // Image("\(room.image)")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 250, height: 200, alignment: .center)
@@ -29,15 +43,18 @@ struct DetailRoomView: View {
                 
                 
                 Text("(서울) 화요일 경도할 사람~ ")
+                // Text("\(room.title)")
                     .font(.system(size: 23))
                     .frame(width: 360, height: 40, alignment: .leading)
                 
                 HStack {
                     Text("# 운동/스포츠")
+                    // Text("# \(room.category.rawValue)")
                         .font(.system(size: 12))
                         .frame(width: 180, height: 25, alignment: .leading)
                         .foregroundColor(.gray)
                     Text("현재 인원 5/10")
+                    // Text("현재 인원 \(room.numberOfParticipants)/\(room.limitOfParticipants)")
                         .font(.system(size: 15))
                         .frame(width: 150, height: 25, alignment: .trailing)
                 }
@@ -51,6 +68,7 @@ struct DetailRoomView: View {
                         .tint(Color("MainColor"))
                         .foregroundColor(.gray)
                     Text("서울시 서초구 양재동")
+                    // Text("\(room.location)")
                 }
                 
                 HStack {
@@ -59,6 +77,7 @@ struct DetailRoomView: View {
                         .frame(alignment: .leading)
                         .frame(width: 210, height: 25, alignment: .leading)
                     Text("2024.02.22 16:40")
+                    // Text("\(room.dateString) \(room.timeString)")
                 }
                 
                 HStack {
@@ -87,6 +106,7 @@ struct DetailRoomView: View {
                         .padding(8)
                         .background(Color(red: 0.75, green: 0.75, blue: 0.75))
                         .cornerRadius(10)
+                    }
                 }
                 
                 
@@ -111,7 +131,6 @@ struct DetailRoomView: View {
                 .overlay(RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.gray, lineWidth: 0.5))
             }
-        }
         participateRoomButtonView()
     }
 }
@@ -150,6 +169,7 @@ struct participateRoomButtonView: View {
             
             Button {
                 // 생성하기 버튼 클릭 시 기능 구현
+                // room.participants.append(UserStore.SampleUser(index: 0))
             } label: {
                 Text("참여하기")
                     .frame(width: 250, height: 40, alignment: .center)
@@ -166,5 +186,18 @@ struct participateRoomButtonView: View {
 
 
 #Preview {
-    DetailRoomView()
+    DetailRoomView(room:
+                    Room(
+                        title: "(경기) 화요일 경도 할 사람?", dateString: "2024-02-22", timeString: "16:30",
+                        location: "경기 의정부시 청사로 1",
+                        admin: UserStore.SampleUser(index: 2), limitOfParticipants: 10,
+                        participants: [
+                            UserStore.SampleUser(index: 0),
+                            UserStore.SampleUser(index: 1),
+                            UserStore.SampleUser(index: 3),
+                            UserStore.SampleUser(index: 4),
+                        ],
+                        isOnline: false, category: .Sports, sexLimit: .None, ageLimit: .Twenty, wattLimit: 90
+                    )
+    )
 }
