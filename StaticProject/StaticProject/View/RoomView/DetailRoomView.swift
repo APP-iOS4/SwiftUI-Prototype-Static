@@ -144,34 +144,11 @@ struct participateRoomButtonView: View {
     var body: some View {
         HStack {
             Button {
-                isLiked.toggle()
-                if isLiked {
-                    isLikedNum += 1
-                } else {
-                    isLikedNum -= 1
-                }
-            } label: {
-                if isLiked {
-                    VStack {
-                        Text(Image(systemName: "star.fill"))
-                        Text("\(isLikedNum)")
-                    }
-                } else {
-                    VStack {
-                        Text(Image(systemName: "star"))
-                        Text("\(isLikedNum)")
-                    }
-                }
-            }
-            .frame(width: 60, height: 60, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            
-            
-            Button {
                 // 참여하기 버튼 클릭 시 기능 구현
-                 room.participants.append(UserStore.SampleUser(index: 0))
+                 //room.participants.append(UserStore.SampleUser(index: 0))
             } label: {
                 Text("참여하기")
-                    .frame(width: 250, height: 40, alignment: .center)
+                    .frame(width: 310, height: 40, alignment: .center)
                     .bold()
             }
             .buttonStyle(.borderedProminent)
