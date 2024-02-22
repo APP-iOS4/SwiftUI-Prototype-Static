@@ -93,6 +93,7 @@ struct CreateRoomView: View {
                     Text("\(personnel)")
                         .font(.title3)
                         .padding(.horizontal)
+                        .frame(width: 50, height: 20, alignment: .center)
                     
                     Button{
                         personnel += 1

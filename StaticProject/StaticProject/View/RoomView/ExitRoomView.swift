@@ -117,6 +117,7 @@ struct ExitRoomView: View {
 struct ExitRoomButtonView: View {
     
     // @Environment(\.presentationMode) var presentation
+    @State private var showingAlert = false
     
     var body: some View {
         HStack {
@@ -126,22 +127,28 @@ struct ExitRoomButtonView: View {
             })
             .frame(width: 40, height: 40, alignment: .center)
             .padding(.trailing, 7)
-            
+            .tint(Color("MainColor"))
             
             Button {
                 // 나가기 버튼 클릭 시 기능 구현
                 // presentation.wrappedValue.dismiss()
+                showingAlert.toggle()
             } label: {
                 Text("나가기")
                     .frame(width: 250, height: 40, alignment: .center)
                     .bold()
             }
+            .tint(Color("MainColor"))
+            
             .buttonStyle(.borderedProminent)
+            .alert("모임을 나가시겠습니까?", isPresented: $showingAlert) {
+                Button("나가기", role: .destructive) {
+                   
+                }
+            }
         }
-        .tint(Color("MainColor"))
     }
 }
-
-#Preview {
+    #Preview {
     NavigationStack{ ExitRoomView() }
 }

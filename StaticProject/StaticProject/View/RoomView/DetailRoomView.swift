@@ -31,7 +31,6 @@ struct DetailRoomView: View {
                 Spacer()
                 ZStack(alignment: .bottomTrailing) {
                     Image(systemName: "figure.run")
-                    // Image("\(room.image)")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 250, height: 200, alignment: .center)
@@ -154,12 +153,12 @@ struct participateRoomButtonView: View {
             } label: {
                 if isLiked {
                     VStack {
-                        Text(Image(systemName: "heart.fill"))
+                        Text(Image(systemName: "star.fill"))
                         Text("\(isLikedNum)")
                     }
                 } else {
                     VStack {
-                        Text(Image(systemName: "heart"))
+                        Text(Image(systemName: "star"))
                         Text("\(isLikedNum)")
                     }
                 }
@@ -168,8 +167,8 @@ struct participateRoomButtonView: View {
             
             
             Button {
-                // 생성하기 버튼 클릭 시 기능 구현
-                // room.participants.append(UserStore.SampleUser(index: 0))
+                // 참여하기 버튼 클릭 시 기능 구현
+                 room.participants.append(UserStore.SampleUser(index: 0))
             } label: {
                 Text("참여하기")
                     .frame(width: 250, height: 40, alignment: .center)
