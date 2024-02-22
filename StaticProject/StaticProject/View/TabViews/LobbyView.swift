@@ -21,8 +21,8 @@ import SwiftUI
 struct LobbyView: View {
     // MARK: - Variables
     @State private var selectedDate: Int = 0
-    @State private var timeInfo = "6:54:32"
-    @State private var isModalPresenting: Bool = false
+    @State private var isPlusModalPresenting: Bool = false
+    @State private var isMapModalPresenting: Bool = false
     private var roomStore = RoomStore()
     // @State private var selectedDateTag: DateCases = .Today  // 날짜 선택 변수
     
@@ -52,10 +52,6 @@ struct LobbyView: View {
         // MARK: -
         
         VStack {
-            
-            Divider()
-            
-            RoomBombTimerView()
             
             Divider()
             
@@ -137,7 +133,7 @@ struct LobbyView: View {
                         Spacer()
                         
                         Button(action: {
-                            isModalPresenting = true
+                            isPlusModalPresenting = true
                         }, label: {
                             Image(systemName: "plus")
                                 .font(.largeTitle)
@@ -147,7 +143,7 @@ struct LobbyView: View {
                                 .clipShape(Circle())
                                 .padding()
                         })
-                        .sheet(isPresented: $isModalPresenting, content: {
+                        .sheet(isPresented: $isPlusModalPresenting, content: {
                             CreateRoomView()
                         })
                     }
@@ -159,12 +155,15 @@ struct LobbyView: View {
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarLeading) {
                 Button {
-                    
+                    isMapModalPresenting = true
                 } label: {
                     Image(systemName: "map.fill")
                         .foregroundStyle(Color("MainColor"))
                     Text("개포동")
                         .foregroundStyle(.black)
+                }
+                .sheet(isPresented: $isMapModalPresenting) {
+                    MapView()
                 }
             }
         }

@@ -39,6 +39,7 @@
 		309F5F312B85CE8800A75339 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309F5F302B85CE8800A75339 /* Message.swift */; };
 		309F5F332B85CECD00A75339 /* MessageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309F5F322B85CECD00A75339 /* MessageStore.swift */; };
 		B0405E652B84D3520014533B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0405E642B84D3520014533B /* MainView.swift */; };
+		B056F6382B8704E1008C30A9 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B056F6372B8704E1008C30A9 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		309F5F302B85CE8800A75339 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		309F5F322B85CECD00A75339 /* MessageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStore.swift; sourceTree = "<group>"; };
 		B0405E642B84D3520014533B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		B056F6372B8704E1008C30A9 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				1FE0DDBF2B866E1000F0465C /* DateButtonView2.swift */,
 				1F9AF3AD2B86234800CF5FC8 /* CategoryBoxButtonView.swift */,
 				1FE0DDBD2B86506C00F0465C /* RoomBombTimerView.swift */,
+				B056F6372B8704E1008C30A9 /* MapView.swift */,
 			);
 			path = PublicUseViews;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				1FE0DDCB2B86715900F0465C /* OnOfflineEnum.swift in Sources */,
 				1F9AF3A52B86204C00CF5FC8 /* AgeLimitsEnum.swift in Sources */,
 				306B678B2B843277006DC98E /* ContentView.swift in Sources */,
+				B056F6382B8704E1008C30A9 /* MapView.swift in Sources */,
 				306B67AD2B843430006DC98E /* DetailRoomView.swift in Sources */,
 				306B67892B843277006DC98E /* StaticProjectApp.swift in Sources */,
 				306B679A2B8432F2006DC98E /* Room.swift in Sources */,
