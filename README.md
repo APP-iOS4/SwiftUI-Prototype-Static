@@ -56,7 +56,7 @@
 
 | 시작화면 | 로그인 뷰 | 계정 생성 뷰 |
 |:---:|:---:|:---:|
-|<img src="https://github.com/APP-iOS4/SwiftUI-Prototype-Static/assets/141600830/681df856-93aa-4d4e-90ee-d7d2d694d824">|<img src="https://github.com/APP-iOS4/SwiftUI-Prototype-Static/assets/141600830/ea53bd67-eaff-4023-9f99-efb0cb73c717">|<img src="https://github.com/APP-iOS4/SwiftUI-Prototype-Static/assets/141600830/2c60d88e-fcea-4ae3-b554-72e092f7bbac">|
+|![시작화면 뷰](./img/StartView.png)|![로그인 뷰](./img/LoginView.png)|![로그인 뷰](./img/SignUpView.png)|
 
 <br>
 <br>
@@ -67,11 +67,9 @@
 3. 방의 자세한 설명을 확인 후 '참가하기' 버튼 클릭을 눌러 참가하기
 4. 채팅으로 자세한 정보를 확인
 
-| 시작화면 | 로그인 뷰 | 계정 생성 뷰 |
+| 메인 뷰 | 방 확인 뷰  | 대화방 뷰 |
 |:---:|:---:|:---:|
-|<img src="https://github.com/APP-iOS4/SwiftUI-Prototype-Static/assets/141600830/e78d5ec9-e3e1-4488-82a0-6bd1e046812e">|<img src="https://github.com/APP-iOS4/SwiftUI-Prototype-Static/assets/141600830/cf24f82b-dafd-4c69-b111-62d2de5b4bc6">|<img src="https://github.com/APP-iOS4/SwiftUI-Prototype-Static/assets/141600830/fbc966ef-3c0b-411d-926b-dbef8a45704d">|
-
-![메인화면 뷰](./img/screenshot.png)
+|![시작화면 뷰](./img/MainView.png)|![로그인 뷰](./img/DetailRoomView.png)|![로그인 뷰](./img/TalkView.png)|
 
 ### 특정한 모임을 탐색하는 경우
 1. '탐색' 탭을 눌러 탐색 페이지로 이동
@@ -80,15 +78,27 @@
 4. 방의 자세한 설명을 확인 후 '참가하기' 버튼 클릭을 눌러 참가하기
 5. 채팅으로 자세한 정보를 확인
 
+| 탐색 뷰 | 방 확인 뷰  | 대화방 뷰 |
+|:---:|:---:|:---:|
+|![시작화면 뷰](./img/SearchView.png)|![로그인 뷰](./img/DetailRoomView.png)|![로그인 뷰](./img/TalkView.png)|
+
 ### 모임을 생성하는 경우
 1. 오른쪽 아래의 +버튼을 눌러 모임 생성 창에 진입
 2. 모임의 이름, 인원, 날짜 및 시간, 카테고리, 모임 소개, 태그를 설정
 3. '생성하기' 버튼을 눌러 모임을 생성
 
+| 메인 뷰 | 방 생성 뷰  | 대화방 뷰 |
+|:---:|:---:|:---:|
+|![시작화면 뷰](./img/MainView.png)|![로그인 뷰](./img/CreateRoomView.png)|![로그인 뷰](./img/TalkView.png)|
+
 ### 참여한 방을 확인하는 경우
 1. '참여한 방' 탭을 눌러 참여한 방 페이지로 이동
 2. 원하는 방 리스트 클릭
 3. 방의 자세한 설명을 확인한 후 좌하단의 말풍선 버튼을 눌러 '채팅방'으로 입장
+
+| 참여한 방 뷰 | 참가한 방 확인 뷰  | 대화방 뷰 |
+|:---:|:---:|:---:|
+|![시작화면 뷰](./img/ParticipateView.png)|![로그인 뷰](./img/ExitRoomView.png)|![로그인 뷰](./img/TalkView.png)|
 
 <br>
 
