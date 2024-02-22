@@ -54,6 +54,14 @@
 1. 회원가입 버튼 눌러 회원가입
 2. 아이디, 비밀번호를 입력 후 로그인
 
+| 시작화면 | 로그인 뷰 | 계정 생성 뷰 |
+|:---:|:---:|:---:|
+|<img src="https://github.com/APP-iOS4/SwiftUI-Prototype-Static/assets/141600830/681df856-93aa-4d4e-90ee-d7d2d694d824">|<img src="https://github.com/APP-iOS4/SwiftUI-Prototype-Static/assets/141600830/ea53bd67-eaff-4023-9f99-efb0cb73c717">|<img src="https://github.com/APP-iOS4/SwiftUI-Prototype-Static/assets/141600830/2c60d88e-fcea-4ae3-b554-72e092f7bbac">|
+
+
+
+
+
 ### 만들어진 모임에 참여하는 경우
 1. 날짜와 온/오프라인 설정을 확인
 2. 원하는 방 리스트 클릭
