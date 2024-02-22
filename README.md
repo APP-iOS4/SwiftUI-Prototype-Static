@@ -58,15 +58,20 @@
 |:---:|:---:|:---:|
 |<img src="https://github.com/APP-iOS4/SwiftUI-Prototype-Static/assets/141600830/681df856-93aa-4d4e-90ee-d7d2d694d824">|<img src="https://github.com/APP-iOS4/SwiftUI-Prototype-Static/assets/141600830/ea53bd67-eaff-4023-9f99-efb0cb73c717">|<img src="https://github.com/APP-iOS4/SwiftUI-Prototype-Static/assets/141600830/2c60d88e-fcea-4ae3-b554-72e092f7bbac">|
 
-
-
-
+<br>
+<br>
 
 ### 만들어진 모임에 참여하는 경우
 1. 날짜와 온/오프라인 설정을 확인
 2. 원하는 방 리스트 클릭
 3. 방의 자세한 설명을 확인 후 '참가하기' 버튼 클릭을 눌러 참가하기
 4. 채팅으로 자세한 정보를 확인
+
+| 시작화면 | 로그인 뷰 | 계정 생성 뷰 |
+|:---:|:---:|:---:|
+|<img src="https://github.com/APP-iOS4/SwiftUI-Prototype-Static/assets/141600830/e78d5ec9-e3e1-4488-82a0-6bd1e046812e">|<img src="https://github.com/APP-iOS4/SwiftUI-Prototype-Static/assets/141600830/cf24f82b-dafd-4c69-b111-62d2de5b4bc6">|<img src="https://github.com/APP-iOS4/SwiftUI-Prototype-Static/assets/141600830/fbc966ef-3c0b-411d-926b-dbef8a45704d">|
+
+![메인화면 뷰](./img/screenshot.png)
 
 ### 특정한 모임을 탐색하는 경우
 1. '탐색' 탭을 눌러 탐색 페이지로 이동
