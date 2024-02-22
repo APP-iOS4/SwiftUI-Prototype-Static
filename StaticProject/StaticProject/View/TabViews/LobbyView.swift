@@ -64,7 +64,7 @@ struct LobbyView: View {
                     switch selectedDate {
                     case 0:
                         let todayRooms = roomStore.allRooms.filter { room in
-                            room.dateString ==  "2024-02-21"
+                            room.dateString ==  "2024-02-22"
                         }
                         
                         
@@ -76,7 +76,7 @@ struct LobbyView: View {
                         
                     case 1:
                         let tomorrowRooms = roomStore.allRooms.filter { room in
-                            room.dateString ==  "2024-02-22"
+                            room.dateString ==  "2024-02-23"
                         }
                         
                         ForEach(tomorrowRooms) { tomorrowRoom in
@@ -86,7 +86,7 @@ struct LobbyView: View {
                         }
                     case 2:
                         let totomorrowRooms = roomStore.allRooms.filter { room in
-                            room.dateString ==  "2024-02-23"
+                            room.dateString ==  "2024-02-24"
                         }
                         
                         ForEach(totomorrowRooms) { totomorrowRoom in

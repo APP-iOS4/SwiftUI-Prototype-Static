@@ -23,37 +23,39 @@ struct ParticipateView: View {
     }
     
     var body: some View {
-        Text("내 계정")
-            .font(.title)
-            .padding()
-        Divider()
-//        LogoImageView()
-//        Text("참여하신 방이 없습니다.")
-        Spacer()
-        
-        if filteredParticipatedRooms.isEmpty {
-            LogoImageView()
-            Text("참여하신 방이 없습니다.")
-        } else {
-            NavigationStack {
+            //        Text("참여한 방")
+            //            .font(.title)
+            //            .padding()
+            Divider()
+            //        LogoImageView()
+            //        Text("참여하신 방이 없습니다.")
+            Spacer()
+            
+            if filteredParticipatedRooms.isEmpty {
+                LogoImageView()
+                Text("참여하신 방이 없습니다.")
+            } else {
                 List {
                     ForEach(filteredParticipatedRooms, content: { room in
                         NavigationLink(destination: {
-                            DetailRoomView()
+                             ExitRoomView()
+                            //DetailRoomView()
                         }, label: {
                             RoomView(room: room)
                         })
                     })
                 }
                 .listStyle(.plain)
+                .navigationTitle("내가 참여한 방")
+                .navigationBarTitleDisplayMode(.inline)
             }
-        }
-        
-        Spacer()
+            Spacer()
     }
 }
 
 #Preview {
-    ParticipateView(user: UserStore.SampleUser(index: 0))
-    // ParticipateView(user: nil)
+    NavigationStack {
+        ParticipateView(user: UserStore.SampleUser(index: 0))
+        //     ParticipateView(user: nil)
+    }
 }

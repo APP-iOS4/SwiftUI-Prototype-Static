@@ -13,9 +13,9 @@ struct AccountView: View {
     
     var body: some View {
         
-        Text("내 계정")
-            .font(.title)
-            .padding()
+//        Text("내 계정")
+//            .font(.title)
+//            .padding()
         Divider()
         // Spacer()
         VStack {
@@ -43,17 +43,21 @@ struct AccountView: View {
                 Divider()
                 // Spacer()
             
+            Text("정전기 지수가 낮으면 사람들과 연결되기 힘들거에요!\n 낮아지지 않도록 매너있게 행동합시다!")
+                .font(.callout)
+                .frame(width: 400, height: 70)
+                .multilineTextAlignment(.center)
+                .background(Color(UIColor.systemGray5))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                
+    //            .background(.)
+            Spacer()
+            
         }
+        .navigationTitle("내 계정")
+        .navigationBarTitleDisplayMode(.inline)
         
-                Text("정전기 지수가 낮으면 사람들과 연결되기 힘들거에요!\n 낮아지지 않도록 매너있게 행동합시다!")
-                    .font(.callout)
-                    .frame(width: 400, height: 70)
-                    .multilineTextAlignment(.center)
-                    .background(Color(UIColor.systemGray5))
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    
-        //            .background(.)
-                Spacer()
+                
     }
     
 //            TabView(selection: $selection) {
@@ -86,5 +90,7 @@ struct AccountView: View {
 
 
 #Preview {
-    AccountView()
+    NavigationStack {
+        AccountView()
+    }
 }
